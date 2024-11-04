@@ -14,7 +14,7 @@
 
 ## Desenvolvedores
 
- * [David S.](https://github.com/davi1bala)
+ * [David S.](https://github.com/davibala)
  * [David L.](https://github.com/brkn-Dvd)
  * [Kauan](https://github.com/kauanGX)
  * [Wesllan K.](https://github.com/KawadevTs)
