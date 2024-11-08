@@ -21,7 +21,7 @@
  * [David L.](https://github.com/brkn-Dvd)
  * [Kauan](https://github.com/kauanGX)
  * [Wesllan K.](https://github.com/KawadevTs)
- * [Matheus G.](https://github.com/MikeXDs)
+ * [Matheus G.](https://github.com/Snowloz)
  * [Renato E.](https://github.com/RenatoE77)
 
 
