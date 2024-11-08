@@ -5,6 +5,10 @@
 ## Funcionalidades
 
 * Cadastrar usuário/perito
+* Enviar perguntas e respostas
+* Gamificação
+* Comunidade colaborativa
+* Explicaçoes passo a passo
 
 ## Tecnologias 
 
