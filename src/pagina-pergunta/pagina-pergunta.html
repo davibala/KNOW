@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="pagina-pergunta.css">
+    <title>KNOW - Crie sua pergunta</title>
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <a href="#">
+                <img class="btn-voltar" src="../../assets/pag-login-btn-voltar.png" alt="botao-voltar">
+            </a>
+            <a href="#">
+                <img class="logo-know" src="../../assets/logo-know.png" alt="logo-know">
+            </a>
+            <div class="barra-de-pesquisa">
+                <form class="container-pesquisa">
+                    <textarea class="txt-pesquisa" name="pesquisa-pergunta" placeholder="Pesquise aqui..."></textarea>
+                    <button class="icone-pesquisa" type="submit">
+                        <img src="../../assets/icone-pesquisa.png" alt="icone-pesquisa">
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="txt-crie-uma-pergunta">Crie uma pergunta</h2>
+            <div class="pergunta-container">
+                <form>
+                    <textarea class="pergunta" name="pergunta" placeholder="Digite sua pergunta aqui..."></textarea>
+                    <button class="botao-enviar-pergunta" type="submit">Enviar</button>
+                </form>
+                <div class="flex-info-filtros">
+                    <div class="filtros">
+                        <button class="botao-atributos">
+                            <p>Periodo</p>
+                            <img src="../../assets/btn-filtro.png" alt="">
+                        </button>
+                        <button class="botao-atributos">
+                            <p>Tag</p>
+                            <img src="../../assets/btn-filtro.png" alt="">
+                        </button>
+                        <button class="botao-atributos">
+                            <p>Disciplina</p>
+                            <img src="../../assets/btn-filtro.png" alt="">
+                        </button>
+                        <button class="botao-atributos">
+                            <p>Curso</p>
+                            <img src="../../assets/btn-filtro.png" alt="">
+                        </button>
+                    </div>
+                    <div class="info">
+                        <img src="../../assets/icon-ajuda.png" alt="">
+                        <p>Responda perguntas para ganhar reconhecimento e pontos.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <script src="pagina-pergunta.js"></script>
+</body>
+
+</html>

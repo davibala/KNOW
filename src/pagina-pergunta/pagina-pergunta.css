@@ -1,0 +1,152 @@
+
+.nav-bar {
+    position: absolute;
+    width: 100%;
+    height: 9.8%;
+    background-color: #2575B1;
+}
+
+.btn-voltar {
+    position: absolute;
+    top: 32.9%;
+    left: 3.2%;
+    width: 2%;
+}
+
+.logo-know {
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    width: 7%;
+}
+
+.barra-de-pesquisa {
+    width: 39.58%;
+    height: 44.9%;
+    position: absolute;
+    top: 28%;
+    left: 51.49%;
+}
+
+.container-pesquisa {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icone-pesquisa {
+    background: none;
+    border: none;
+}
+
+.icone-pesquisa:hover {
+    translate: translateY(-2px);
+}
+
+.txt-pesquisa {
+    resize: none;
+    width: 90%;
+    height: 100%;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 53px;
+}
+
+.container {
+    width: 83%;
+    height: 82%;
+    position: absolute;
+    top: 12.11%;
+    left: 8.43%;
+}
+
+.txt-crie-uma-pergunta {
+    position: absolute;
+    top: 2%;
+    left: 8.43%;
+}
+
+.pergunta-container {
+    width: 85%;
+    height: 80%;
+    position: absolute;
+    top: 10.5%;
+    left: 8.43%;
+    background-color: #2575B1;
+    border-radius: 10px;
+}
+
+.pergunta {
+    position: absolute;
+    top: 5.14%;
+    left: 2%;
+    resize: none;
+    width: 96%;
+    height: 78%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.botao-enviar-pergunta {
+    position: absolute;
+    top: 105%;
+    left: 86%;
+    width: 14%;
+    height: 7%;
+    background-color: #13568E;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+.botao-enviar-pergunta:hover {
+    background-color: #0D3C5F;
+    transform: translateY(-2px);
+}
+
+.botao-enviar-pergunta:active {
+    transform: translateY(2px);
+}
+
+.filtros {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.botao-atributos {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #13568E;
+}
+
+.botao-atributos:hover {
+    background-color: #0D3C5F;
+}
+
+.flex-info-filtros {
+    width: 96%;
+    height: 10%;
+    display: flex;
+    position: absolute;
+    top: 85%;
+    left: 2%;
+    justify-content: space-between;
+}
+
