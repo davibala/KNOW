@@ -1,0 +1,11 @@
+1536
+72    <- nav-bar
+
+1152
+608   <- container
+
+953
+443   <- pergunta-container
+
+638
+28

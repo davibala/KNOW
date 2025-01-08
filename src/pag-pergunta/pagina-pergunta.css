@@ -1,103 +1,63 @@
 
 .btn-voltar {
+    width: 1.66%;
+    height: 35.5%;
     position: absolute;
-    top: 32.9%;
-    left: 3.2%;
-    width: 2%;
+    top: 35.5%;
+    left: 3.19%;
 }
 
 .logo-know {
+    width: 7.42%;
+    height: 87.5%;
     position: absolute;
-    top: 10%;
-    left: 45%;
-    width: 7%;
+    top: 5.55%;
+    left: 46.28%;
 }
 
-.txt-crie-uma-pergunta {
+.txt-faca-uma-pergunta {
     position: absolute;
-    top: 2%;
-    left: 8.43%;
+    left: 8.76%;
 }
 
 .pergunta-container {
-    width: 85%;
-    height: 80%;
+    width: 82.72%;
+    height: 72.86%;
     position: absolute;
-    top: 10.5%;
-    left: 8.43%;
+    top: 13.81%;
+    left: 8.59%;
     background-color: #2575B1;
-    border-radius: 10px;
+    border-radius: 14px;
 }
 
-.pergunta {
+.area-pergunta {
+    width: 96.52%;
+    height: 81.36%;
     position: absolute;
-    top: 5.14%;
-    left: 2%;
+    top: 5%;
+    left: 1.88%;
     resize: none;
-    width: 96%;
-    height: 78%;
     border-radius: 10px;
     padding: 10px;
 }
 
-.info {
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-}
-
-.botao-enviar-pergunta {
+#btn-enviar {
     position: absolute;
     top: 105%;
-    left: 86%;
-    width: 14%;
-    height: 7%;
-    background-color: #13568E;
+    left: 91%;
     border-radius: 10px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-
 }
 
-.botao-enviar-pergunta:hover {
-    background-color: #0D3C5F;
-    transform: translateY(-2px);
-}
-
-.botao-enviar-pergunta:active {
-    transform: translateY(2px);
-}
-
-.filtros {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.botao-atributos {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #13568E;
-}
-
-.botao-atributos:hover {
-    background-color: #0D3C5F;
-}
-
-.flex-info-filtros {
-    width: 96%;
-    height: 10%;
-    display: flex;
+#filtros {
+    width: 20.31%;
     position: absolute;
-    top: 85%;
+    top: 88%;
     left: 2%;
-    justify-content: space-between;
+    display: flex;
+    gap: 21.5px;
 }
 
+#filtros button {
+    transform: none;
+    gap: 10px;
+}

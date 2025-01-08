@@ -11,16 +11,58 @@ body {
 }
 
 .container {
-    width: 83%;
-    height: 82%;
+    width: 75%;
+    height: 78.35%;
     position: absolute;
-    top: 12.11%;
-    left: 8.43%;
+    top: 15.46%;
+    left: 12.5%;
 }
 
 .nav-bar {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 9.8%;
+    height: 72px;
     background-color: #2575B1;
+    z-index: 10;
+}
+
+.lateral-esquerda {
+    width: 12.5%;
+    height: 90.72%;
+    position: fixed;
+    top: 9.3%;
+    background-color: #D7F1FF;
+}
+
+.lateral-direita {
+    width: 12.5%;
+    height: 90.72%;
+    position: fixed;
+    top: 9.3%;
+    right: 0%;
+    background-color: #D7F1FF;
+}
+
+.btn-1 {
+    align-items: center;
+    background-color: #13568E;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    color: rgb(255, 255,    255);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    font-weight: 600;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    transition: 250ms;
+    border: none;
+}
+
+.btn-1:hover {
+    transform: translateY(-1.5px);
+}
+
+.btn-1:active {
+    background-color: #0D3C5F;
+    transform: translateY(0);
 }

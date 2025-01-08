@@ -11,13 +11,60 @@
 
 <body>
     <header>
-        <div class="nav-bar">
-            
-        </div>
+        <nav class="nav-bar">
+            <a href="../pag-feed/pagina-feed.html">
+                <svg class="btn-voltar" width="26" height="27" viewBox="0 0 26 27" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.3984 12.3323H8.41804L14.3803 6.3701L12.8657 4.86621L4.33301 13.3989L12.8657 21.9316L14.3696 20.4277L8.41804 14.4655H21.3984V12.3323Z"
+                        fill="white" />
+                </svg>
+            </a>
+            <a href="pagina-resposta.html">
+                <img class="logo-know" src="../../assets/logo-know.png" alt="logo-know">
+            </a>
+        </nav>
     </header>
-    <h1>ola mundo!</h1>
-
-
+    <main>
+        <div class="lateral-esquerda"></div>
+        <div class="container">
+            <h2 class="titulo-pergunta">What is lorem ipsum?</h2>
+            <hr>
+            <div class="post">
+                <p class="corpo-pergunta">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type specimen book. It has survived not
+                    only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                    Ipsum.</p>
+                <div class="flex-post">
+                    <div>
+                        <button class="btn-gostei"></button>
+                        <button class="btn-desgostei"></button>
+                    </div>
+                    <div class="autor">
+                        <p class="data-de-envio">enviado 5 dias atrás por</p>
+                        <div class="img-autor"></div>
+                        <p class="nome-autor">Fulano</p>
+                    </div>
+                </div>
+            </div>
+            <h2 class="titulo-sua-resposta">Responda esta pergunta</h2>
+            <div class="resposta-container">
+                <form>
+                    <textarea class="area-resposta" name="resposta" placeholder="Digite sua resposta aqui..."></textarea>
+                    <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
+                </form>
+                <div class="formatacoes">
+                    <img src="../../assets/bold.png" alt="">
+                    <img src="../../assets/italic.png" alt="">
+                    <img src="../../assets/sublinhed.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="lateral-direita"></div>
+    </main>
 </body>
 
 </html>

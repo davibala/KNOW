@@ -1,0 +1,83 @@
+
+.logo-know {
+    position: absolute;
+    top: 5.55%;
+    left: 12.5%;
+}
+
+.container-login {
+    width: 42.006%;
+    height: 48.9%;
+    position: absolute;
+    top: 28%;
+    right: 9.3%;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.campo-email , .campo-senha {
+    resize: none;
+    width: 224px;
+    height: 32px;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 53px;
+    font-weight: bold;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: #666;
+    outline: 0;
+    border: 0;
+    padding: 5px 7px;
+    background: #e5e5e5
+}
+
+#btn-entrar {
+    width: 13.39%;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#btn-entrar button {
+    border: none;
+    background: none;
+    color: #ffffff;
+}
+
+#container-inicio {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo {
+    width: 46.61%;
+    position: absolute;
+    top: 20%;
+    font-size: 56px;
+    letter-spacing: -1px;
+    line-height: 60px;
+}
+
+.subtitulo {
+    width: 47%;
+    position: absolute;
+    top: 54.6%;
+    font-size: 18px;
+    line-height: 27px;
+    opacity: 75%;
+}
+
+#btn-cadastrar {
+    font-size: 20px;
+    position: absolute;
+    top: 77.30%;
+}
+
+.img-inicio {
+    position: relative;
+    right: 0;
+}

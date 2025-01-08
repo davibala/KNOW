@@ -1,0 +1,149 @@
+.logo-know {
+    width: 7.42%;
+    height: 87.5%;
+    position: absolute;
+    top: 5.55%;
+    left: 12.5%;
+}
+
+.container {
+    height: auto;
+    padding: 0 1.64% 1% 1.64%;
+}
+
+.container-pesquisa {
+    width: 31.83%;
+    height: 44.44%;
+    position: absolute;
+    top: 26.38%;
+    left: 33.13%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.campo-pesquisa {
+    width: 100%;
+    height: 100%;
+    background: #D9D9D9;
+    border: none;
+    padding: 10px;
+    border-radius: 56px;
+}
+
+.icone-pesquisa {
+    width: 10%;
+    height: 100%;
+    background: none;
+    border: none;
+    border-radius: 56px;
+}
+
+.container-usuario {
+    width: 5.40%;
+    height: 69.44%;
+    position: absolute;
+    left: 82.09%;
+    top: 11.11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-usuario {
+    width: 25%;
+    height: 25%;
+}
+
+.icone-usuario {
+    width: 50px;
+    height: 50px;
+    border-radius: 56px;
+    background-color: #D9D9D9;
+}
+
+.flex-titulo-pergunta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-pergunta {
+    padding: 0 5% 0 5%;
+    text-decoration: none;
+}
+
+.btn-pergunta button {
+    border: none;
+    background: none;
+    color: white;
+}
+
+.post {
+    border: 1px solid #D9D9D9;
+    width: 100%;
+    height: 35.06%;
+    padding: 1%;
+    margin-top: 5%;
+}
+
+.flex-usuario-nome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-pergunta {
+    font-weight: 600;
+    margin: 1% 0 1% 0;
+}
+
+.conteudo-pergunta {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.tags {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tag {
+    display: flex;
+    justify-content: center;
+    padding: 0 5% 0 5%;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.tag-um {
+    background: #FED5B9;
+}
+
+.tag-dois {
+    background: #B9FEC8;
+}
+
+.flex-tag-responder {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5%;
+    align-items: center;
+}
+
+.btn-responder {
+    padding: 1% 3% 1% 3%;
+    text-decoration: none;
+}
+
+.btn-responder button {
+    border: none;
+    background: none;
+    color: white;
+}
