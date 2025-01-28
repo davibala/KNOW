@@ -10,49 +10,58 @@
 .logo-know {
     width: 7.42%;
     height: 87.5%;
-    position: absolute;
+    position: relative;
     top: 5.55%;
     left: 46.28%;
 }
 
 .txt-faca-uma-pergunta {
-    position: absolute;
+    position: relative;
     left: 8.76%;
 }
 
 .pergunta-container {
     width: 82.72%;
     height: 72.86%;
-    position: absolute;
-    top: 13.81%;
-    left: 8.59%;
+    margin-top: 5%;
+    margin-left: 8.59%;
     background-color: #2575B1;
     border-radius: 14px;
+    padding-left: 1.88%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.area-pergunta {
-    width: 96.52%;
-    height: 81.36%;
-    position: absolute;
-    top: 5%;
-    left: 1.88%;
+.pergunta-titulo {
+    width: 97.5%;
+    height: 21.36%;
     resize: none;
+    margin-bottom: 1%;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 0px 0px 10px;
+    font-size: 1.5em;
+}
+
+.pergunta-descricao {
+    width: 97.5%;
+    height: 100%;
+    margin-bottom: 13%;
+    resize: none; 
+    border-radius: 10px;
+    padding: 20px 0px 0px 10px;
+    font-size: 1.5em;
 }
 
 #btn-enviar {
     position: absolute;
-    top: 105%;
-    left: 91%;
+    top: 95%;
+    left: 85%;
     border-radius: 10px;
 }
 
 #filtros {
-    width: 20.31%;
-    position: absolute;
-    top: 88%;
-    left: 2%;
+    margin-top: 3%;
     display: flex;
     gap: 21.5px;
 }

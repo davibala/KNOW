@@ -1,3 +1,23 @@
+<?php 
+require_once '../db.php';
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $titulo = $_POST['titulo'];
+    $descricao = $_POST['descricao'];
+    $nome = $_SESSION['usuario'];
+
+
+    $stmt = $pdo->prepare("INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES (?, ?, ?)");
+    if ($stmt->execute([$titulo, $descricao, $nome])) {
+        header('Location: ../pag-feed/pagina-feed.php');
+    } else {
+        echo "Erro ao registrar pergunta.";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +32,7 @@
 <body>
     <header>
         <div class="nav-bar">
-            <a href="../pag-feed/pagina-feed.html">
+            <a href="../pag-feed/pagina-feed.php">
                 <svg class="btn-voltar" width="26" height="27" viewBox="0 0 26 27" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -31,19 +51,19 @@
         <div class="container">
             <h2 class="txt-faca-uma-pergunta">Faça uma pergunta</h2>
             <div class="pergunta-container">
-                <form>
-                    <textarea class="area-pergunta" name="pergunta"
-                        placeholder="Digite sua pergunta aqui..."></textarea>
+                <form method="POST">
+                    <input class="pergunta-titulo" name="titulo" placeholder="titulo" required>
+                    <input class="pergunta-descricao" name="descricao" placeholder="Digite sua pergunta aqui..." required>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </form>
                 <div id="filtros">
                     <button class="btn-1">
                         Disciplina
-                        <img src="../../assets/btn-filtro.png" alt="">
+                        <img src="../../assets/btn-filtro.png" alt="botao-filtro">
                     </button>
                     <button class="btn-1">
                         <p>Curso</p>
-                        <img src="../../assets/btn-filtro.png" alt="">
+                        <img src="../../assets/btn-filtro.png" alt="botao-filtro">
                     </button>
                 </div>
             </div>

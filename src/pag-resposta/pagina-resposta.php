@@ -1,3 +1,7 @@
+<?php 
+    include_once('db.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +16,7 @@
 <body>
     <header>
         <nav class="nav-bar">
-            <a href="../pag-feed/pagina-feed.html">
+            <a href="../pag-feed/pagina-feed.php">
                 <svg class="btn-voltar" width="26" height="27" viewBox="0 0 26 27" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -20,7 +24,7 @@
                         fill="white" />
                 </svg>
             </a>
-            <a href="pagina-resposta.html">
+            <a href="pagina-resposta.php">
                 <img class="logo-know" src="../../assets/logo-know.png" alt="logo-know">
             </a>
         </nav>

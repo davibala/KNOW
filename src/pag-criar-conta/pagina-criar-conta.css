@@ -1,0 +1,62 @@
+.btn-voltar {
+    width: 1.66%;
+    height: 35.5%;
+    position: absolute;
+    top: 35.5%;
+    left: 3.19%;
+}
+
+.logo-know {
+    width: 7.42%;
+    height: 87.5%;
+    position: absolute;
+    top: 5.55%;
+    left: 46.28%;
+}
+
+.campo-criar-conta {
+    width: 60.50%;
+    height: 86.67%;
+    position: relative;
+    top: 8.55%;
+    left: 19.79%;
+    padding-left: 8.46%;
+}
+
+.form-criar-conta {
+    width: 100%;
+    height: 100%;
+}
+
+.titulo {
+    font-weight: 500;
+}
+
+.campos {
+    margin-top: 6.5%;
+    width: 83.21%;
+    height: 16.50%;
+}
+
+.titulos {
+    color: #666666;
+}
+
+.inputs {
+    width: 100%;
+    height: 65%;
+    border-radius: 10px;
+    border: 1px solid #666666;
+    padding: 0 2% 0 2%;
+}
+
+.btn-1 {
+    width: 83.21%;
+    height: 12%;
+    border-radius: 10px;
+    margin-top: 6.5%;
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 500;
+    
+}
