@@ -6,6 +6,3 @@
 
 953
 443   <- pergunta-container
-
-638
-28

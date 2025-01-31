@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once '../db.php';
 session_start();
 
@@ -37,8 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M21.3984 12.3323H8.41804L14.3803 6.3701L12.8657 4.86621L4.33301 13.3989L12.8657 21.9316L14.3696 20.4277L8.41804 14.4655H21.3984V12.3323Z"
-                        fill="white" 
-                    />
+                        fill="white" />
                 </svg>
             </a>
             <a href="#">
@@ -52,18 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2 class="txt-faca-uma-pergunta">Faça uma pergunta</h2>
             <div class="pergunta-container">
                 <form method="POST">
-                    <input class="pergunta-titulo" name="titulo" placeholder="titulo" required>
-                    <input class="pergunta-descricao" name="descricao" placeholder="Digite sua pergunta aqui..." required>
+                    <textarea class="pergunta-titulo" name="titulo" placeholder="título" required></textarea>
+                    <textarea class="pergunta-descricao" name="descricao" placeholder="Digite sua pergunta aqui..."
+                        required></textarea>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </form>
                 <div id="filtros">
                     <button class="btn-1">
                         Disciplina
-                        <img src="../../assets/btn-filtro.png" alt="botao-filtro">
+                        <img src="../../assets/icon-dropdown.png" alt="botao-filtro">
                     </button>
                     <button class="btn-1">
                         <p>Curso</p>
-                        <img src="../../assets/btn-filtro.png" alt="botao-filtro">
+                        <img src="../../assets/icon-dropdown.png" alt="botao-filtro">
                     </button>
                 </div>
             </div>

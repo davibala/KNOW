@@ -12,8 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute([$nome, $email]);
     if ($stmt->rowCount() > 0) {
         echo "Nome de usuário ou e-mail já existe!";
-    }
-    else {
+    } else {
         // Insere o novo usuário no banco de dados
         $stmt = $pdo->prepare("INSERT INTO knw_usuarios (USU_NOME, USU_EMAIL, USU_SENHA) VALUES (?, ?, ?)");
         if ($stmt->execute([$nome, $email, $senha])) {
@@ -28,13 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="pagina-criar-conta.css">
-    <title>Document</title> 
+    <title>Document</title>
 </head>
+
 <body>
     <header>
         <div class="nav-bar">
@@ -43,8 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M21.3984 12.3323H8.41804L14.3803 6.3701L12.8657 4.86621L4.33301 13.3989L12.8657 21.9316L14.3696 20.4277L8.41804 14.4655H21.3984V12.3323Z"
-                        fill="white"
-                    />
+                        fill="white" />
                 </svg>
             </a>
             <a href="#">
@@ -75,4 +75,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </main>
 </body>
+
 </html>

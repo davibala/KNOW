@@ -108,7 +108,8 @@
 .tags {
     width: 30%;
     display: flex;
-    justify-content: space-around;
+    gap: 5%;
+    white-space: nowrap;
 }
 
 .tag {
@@ -146,4 +147,19 @@
     border: none;
     background: none;
     color: white;
+}
+
+.flex-usuario-nome-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-pergunta {
+    color: #747373;
+    font-size: 13px;
+}
+
+.msg-erro {
+    color: rgb(253, 71, 71);
+    margin-top: 5%;
 }

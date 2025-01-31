@@ -1,6 +1,18 @@
-<?php 
-    include_once('db.php'); 
+<?php
+require_once '../db.php';
+session_start();
+if (!$_SESSION['logado']) {
+    header('Location: ../index.php');
+}
+
+$pergunta_id = $_GET['id'];
+$stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS FROM knw_pergunta WHERE PER_ID = ?");
+$stmt->execute([$pergunta_id]);
+$pergunta = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Use os detalhes da pergunta conforme necessário na página
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,38 +44,39 @@
     <main>
         <div class="lateral-esquerda"></div>
         <div class="container">
-            <h2 class="titulo-pergunta">What is lorem ipsum?</h2>
+            <h2 class="titulo-pergunta"><?php echo "$pergunta[PER_TITULO]" ?></h2>
             <hr>
             <div class="post">
-                <p class="corpo-pergunta">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a type specimen book. It has survived not
-                    only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                    Ipsum.</p>
-                <div class="flex-post">
-                    <div>
-                        <button class="btn-gostei"></button>
-                        <button class="btn-desgostei"></button>
-                    </div>
-                    <div class="autor">
-                        <p class="data-de-envio">enviado 5 dias atrás por</p>
-                        <div class="img-autor"></div>
-                        <p class="nome-autor">Fulano</p>
-                    </div>
+                <p class="corpo-pergunta"><?php echo "$pergunta[PER_DESCRICAO]" ?></p>
+                <div class="autor">
+                    <p class="data-de-envio">
+                        <?php
+                        if ($pergunta['DIFERENCA_MINUTOS'] < 60) {
+                            echo "Enviado há " . $pergunta['DIFERENCA_MINUTOS'] . " minutos atrás por";
+                        } elseif ($pergunta['DIFERENCA_MINUTOS'] < 1440) {
+                            $horas = intdiv($pergunta['DIFERENCA_MINUTOS'], 60);
+                            echo "Enviado há " . $horas . " horas atrás por";
+                        } else {
+                            $dias = intdiv($pergunta['DIFERENCA_MINUTOS'], 1440);
+                            echo "Enviado há " . $dias . " dias atrás por";
+                        }
+                        ?>
+                    </p>
+                    <div class="img-autor"></div>
+                    <p class="nome-autor"><?php echo "$pergunta[PER_USU_NOME]" ?></p>
                 </div>
             </div>
             <h2 class="titulo-sua-resposta">Responda esta pergunta</h2>
             <div class="resposta-container">
                 <form>
-                    <textarea class="area-resposta" name="resposta" placeholder="Digite sua resposta aqui..."></textarea>
+                    <textarea class="area-resposta" name="resposta"
+                        placeholder="Digite sua resposta aqui..."></textarea>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </form>
                 <div class="formatacoes">
-                    <img src="../../assets/bold.png" alt="">
-                    <img src="../../assets/italic.png" alt="">
-                    <img src="../../assets/sublinhed.png" alt="">
+                    <img src="../../assets/icon-bold.png" alt="">
+                    <img src="../../assets/icon-italic.png" alt="">
+                    <img src="../../assets/icon-sublinhed.png" alt="">
                 </div>
             </div>
         </div>
