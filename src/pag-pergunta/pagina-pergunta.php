@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descricao = $_POST['descricao'];
     $nome = $_SESSION['usuario'];
 
-
     $stmt = $pdo->prepare("INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES (?, ?, ?)");
     if ($stmt->execute([$titulo, $descricao, $nome])) {
         header('Location: ../pag-feed/pagina-feed.php');
@@ -16,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">

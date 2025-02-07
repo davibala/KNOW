@@ -21,7 +21,7 @@ body {
 .nav-bar {
     position: fixed;
     width: 100%;
-    height: 72px;
+    height: 9.3%;
     background-color: #2575B1;
     z-index: 10;
 }
@@ -32,6 +32,7 @@ body {
     position: fixed;
     top: 9.3%;
     background-color: #D7F1FF;
+    z-index: 9;
 }
 
 .lateral-direita {
@@ -41,6 +42,7 @@ body {
     top: 9.3%;
     right: 0%;
     background-color: #D7F1FF;
+    z-index: 9;
 }
 
 .btn-1 {

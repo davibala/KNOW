@@ -1,18 +1,53 @@
 <?php
 require_once '../db.php';
 session_start();
-if (!$_SESSION['logado']) {
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['logado']) || !$_SESSION['logado']) {
     header('Location: ../index.php');
+    exit();
+}
+
+// Verifica se o ID da pergunta foi passado na URL
+if (!isset($_GET['id'])) {
+    header('Location: ../pag-feed/pagina-feed.php');
+    exit();
 }
 
 $pergunta_id = $_GET['id'];
+
+// Prepara e executa a consulta para obter os detalhes da pergunta
 $stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS FROM knw_pergunta WHERE PER_ID = ?");
-$stmt->execute([$pergunta_id]);
-$pergunta = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->execute([$pergunta_id]); // Execute a consulta
+$pergunta = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch para obter apenas uma pergunta
 
-// Use os detalhes da pergunta conforme necessário na página
+// Prepara e executa a consulta para obter as respostas da pergunta
+$stmt = $pdo->prepare("SELECT * FROM KNW_RESPOSTA WHERE RES_PER_ID = ?"); // Use o ID da pergunta para filtrar as respostas
+$stmt->execute([$pergunta_id]); // Execute a consulta
+$respostas = $stmt->fetchAll(PDO::FETCH_ASSOC); // Use fetchAll para obter todas as respostas
+
+// Verifica se a pergunta existe
+if (!$pergunta) {
+    header('Location: ../pag-feed/pagina-feed.php');
+    exit();
+}
+
+// Processa o envio da resposta
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty(trim($_POST['resposta']))) {
+        $resposta_usuario = trim($_POST['resposta']);
+        $usuario_id = $_SESSION['usuario']; // Assumindo que o ID do usuário está na sessão
+
+        // Insere a resposta no banco de dados
+        $stmt = $pdo->prepare("INSERT INTO knw_resposta (RES_DESCRICAO, RES_PER_ID, RES_USU_NOME) VALUES (?, ?, ?)");
+        $stmt->execute([$resposta_usuario, $pergunta_id, $usuario_id]);
+
+        // Redireciona de volta para a página da pergunta ou para o feed
+        header("Location: pagina-resposta.php?id=$pergunta_id");
+        exit();
+    }
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -44,10 +79,10 @@ $pergunta = $stmt->fetch(PDO::FETCH_ASSOC);
     <main>
         <div class="lateral-esquerda"></div>
         <div class="container">
-            <h2 class="titulo-pergunta"><?php echo "$pergunta[PER_TITULO]" ?></h2>
+            <h2 class="titulo-pergunta"><?= $pergunta['PER_TITULO']; ?></h2>
             <hr>
-            <div class="post">
-                <p class="corpo-pergunta"><?php echo "$pergunta[PER_DESCRICAO]" ?></p>
+            <div class="pergunta">
+                <p class="corpo-pergunta"><?= $pergunta['PER_DESCRICAO']; ?></p>
                 <div class="autor">
                     <p class="data-de-envio">
                         <?php
@@ -63,22 +98,40 @@ $pergunta = $stmt->fetch(PDO::FETCH_ASSOC);
                         ?>
                     </p>
                     <div class="img-autor"></div>
-                    <p class="nome-autor"><?php echo "$pergunta[PER_USU_NOME]" ?></p>
+                    <p class="nome-autor"><?= $pergunta['PER_USU_NOME']; ?></p>
                 </div>
             </div>
-            <h2 class="titulo-sua-resposta">Responda esta pergunta</h2>
-            <div class="resposta-container">
-                <form>
-                    <textarea class="area-resposta" name="resposta"
-                        placeholder="Digite sua resposta aqui..."></textarea>
+            <div class="respostas">
+                <?php if (!empty($respostas)): ?>
+                    <h2 class="titulo-respostas">Respostas</h2>
+                    <?php foreach ($respostas as $resposta): ?>
+                        <div class='resposta'>
+                            <div class='flex-usuario-nome'>
+                                <div class='icone-usuario'></div>
+                                <h3 class='nome-usuario'><?= $resposta['RES_USU_NOME'] ?></h3>
+                            </div>
+                            <p class='conteudo-resposta'><?= $resposta['RES_DESCRICAO'] ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <?php if (!empty($respostas)): ?>
+                <h2 class="titulo-sua-resposta">Responda a esta pergunta!</h2>
+            <?php else: ?>
+                <h2 class="titulo-sua-resposta">Seja o primeiro a responder esta pergunta!</h2>
+            <?php endif; ?>
+            <form method="POST" class="resposta-container">
+                <textarea class="area-resposta" name="resposta" placeholder="Digite sua resposta aqui..."
+                    required></textarea>
+                <div class="flex-formatacoes-btn">
+                    <div class="formatacoes">
+                        <img src="../../assets/icon-bold.png" alt="">
+                        <img src="../../assets/icon-italic.png" alt="">
+                        <img src="../../assets/icon-sublinhed.png" alt="">
+                    </div>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
-                </form>
-                <div class="formatacoes">
-                    <img src="../../assets/icon-bold.png" alt="">
-                    <img src="../../assets/icon-italic.png" alt="">
-                    <img src="../../assets/icon-sublinhed.png" alt="">
                 </div>
-            </div>
+            </form>
         </div>
         <div class="lateral-direita"></div>
     </main>

@@ -33,15 +33,21 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <a href="pagina-feed.php">
                 <img class="logo-know" src="../../assets/logo-know.png" alt="logo-know">
             </a>
-            <form class="container-pesquisa" method="GET">
+            <form class="container-pesquisa" method="GET"> 
                 <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar"
-                    value="<?php echo htmlspecialchars($pesquisa); ?>">
+                    value="<?= $pesquisa ?>"> <!-- Guarda dentro do campo de pesquisa o valor que foi pesquisado  -->
                 <button class="icone-pesquisa btn-1" type="submit"><img src="../../assets/icon-pesquisa.png"
                         alt="icone-pesquisa"></button>
             </form>
             <div class="container-usuario">
-                <img class="menu-usuario" src="../../assets/icon-dropdown.png" alt="">
-                <div class="icone-usuario"></div>
+                <div class="dropdown">
+                    <button onclick="menuDropdown()" class="dropbtn"><img class="menu-usuario" src="../../assets/icon-dropdown.png" alt=""></button> <!-- mostra uma caixa de opcoes ao ser clicado -->
+                    <div id="perfil-dropdown" class="dropdown-conteudo"> <!-- conteudo mostrado ao clicar no dropdown -->
+                        <a href="../pag-perfil/pagina-perfil.php">Perfil</a>
+                        <a href="../">Sair</a>
+                    </div>
+                </div>
+                <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
             </div>
         </nav>
     </header>
@@ -49,42 +55,42 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="lateral-esquerda"></div>
         <div class="container">
             <div class="flex-titulo-pergunta">
-                <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2>
+                <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2> <!-- exibi o nome do usuario que esta salvo na sessao -->
                 <a class="btn-pergunta btn-1" href="../pag-pergunta/pagina-pergunta.php">
                     <button>Faça uma pergunta</button>
                 </a>
             </div>
-            <?php if (count($perguntas) > 0): ?>
-                <?php foreach ($perguntas as $pergunta): ?>
+            <?php if (count($perguntas) > 0): ?> <!-- verifica se há perguntas cadastradas -->
+                <?php foreach ($perguntas as $pergunta): ?> <!-- itera sobre as perguntas -->
                     <div class='post'>
                         <div class="flex-usuario-nome-data">
                             <div class='flex-usuario-nome'>
-                                <div class='icone-usuario'></div>
-                                <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3>
+                                <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                                <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3> <!-- exibi o nome do usuario que fez a pergunta -->
                             </div>
                             <p class='data-pergunta'>
                                 <?php
-                                if ($pergunta['DIFERENCA_MINUTOS'] < 60) {
-                                    echo "Enviado há " . $pergunta['DIFERENCA_MINUTOS'] . " minutos atrás";
+                                if ($pergunta['DIFERENCA_MINUTOS'] < 60) { // 60 minutos = 1 hora
+                                    echo "Enviado há " . $pergunta['DIFERENCA_MINUTOS'] . " minutos atrás"; // exibi a quantidade de minutos
                                 } elseif ($pergunta['DIFERENCA_MINUTOS'] < 1440) { // 1440 minutos = 1 dia
-                                    $horas = intdiv($pergunta['DIFERENCA_MINUTOS'], 60);
+                                    $horas = intdiv($pergunta['DIFERENCA_MINUTOS'], 60); // retorna o valor em horas
                                     echo "Enviado há " . $horas . " horas atrás";
                                 } else {
-                                    $dias = intdiv($pergunta['DIFERENCA_MINUTOS'], 1440);
+                                    $dias = intdiv($pergunta['DIFERENCA_MINUTOS'], 1440); // retorna o valor em dias
                                     echo "Enviado há " . $dias . " dias atrás";
                                 }
                                 ?>
                             </p>
                         </div>
-                        <h4 class='titulo-pergunta'><?= $pergunta['PER_TITULO'] ?></h4>
-                        <p class='conteudo-pergunta'><?= $pergunta['PER_DESCRICAO'] ?></p>
-                        <div class='flex-tag-responder'>
+                        <h4 class='titulo-pergunta'><?= $pergunta['PER_TITULO'] ?></h4> <!-- exibi o titulo da pergunta -->
+                        <p class='conteudo-pergunta'><?= $pergunta['PER_DESCRICAO'] ?></p> <!-- exibi o conteudo da pergunta -->
+                        <div class='flex-tag-responder'> <!-- ATENÇÃO!!! fazer o sistema de tags -->
                             <div class='tags'>
                                 <div class='tag tag-um'>IPI</div>
                                 <div class='tag tag-dois'>Lógica de programação</div>
                             </div>
                             <a class='btn-1 btn-responder'
-                                href='../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>'>
+                                href='../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>'> <!-- redireciona para a pagina de resposta com o id daquela pergunta -->
                                 <button>Responder</button>
                             </a>
                         </div>
@@ -92,10 +98,12 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="msg-erro">Nenhuma pergunta encontrada para a pesquisa.</p>
-            <?php endif; ?>
+            <?php endif;
+            ?>
         </div>
         <div class="lateral-direita"></div>
     </main>
+    <script src="pagina-feed.js"></script>
 </body>
 
 </html>
