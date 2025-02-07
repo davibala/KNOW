@@ -1,5 +1,5 @@
 # KNOW
-(Knowledge Navigation and Online Wisdom) Navegação de conhecimento e sabedoria online. O nosso projeto se baseia em uma plataforma digital de aprendizado entre os alunos do campus Igarassu.
+(Knowledge Navigation and Online Wisdom) Navegação de conhecimento e sabedoria online. O nosso projeto se baseia em uma plataforma digital de aprendizado entre os alunos.
 
 
 ## Funcionalidades
