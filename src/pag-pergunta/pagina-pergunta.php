@@ -3,17 +3,34 @@ require_once '../db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Captura os dados da pergunta
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
     $nome = $_SESSION['usuario'];
+    $tags = isset($_POST['tags']) ? explode(',', $_POST['tags']) : []; // Converte a string de tags em um array
 
+    // Insere a pergunta no banco de dados
     $stmt = $pdo->prepare("INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES (?, ?, ?)");
     if ($stmt->execute([$titulo, $descricao, $nome])) {
-        header('Location: ../pag-feed/pagina-feed.php');
+        $perguntaId = $pdo->lastInsertId(); // Captura o ID da pergunta inserida
+
+        // Associa as tags à pergunta
+        if (!empty($tags)) {
+            foreach ($tags as $tagId) {
+                $stmt = $pdo->prepare("INSERT INTO PERGUNTA_TAGS (PER_ID, TAG_ID) VALUES (?, ?)");
+                $stmt->execute([$perguntaId, $tagId]);
+            }
+        }
+
+        header('Location: ../pag-feed/pagina-feed.php'); // Redireciona após o sucesso
     } else {
         echo "Erro ao registrar pergunta.";
     }
 }
+
+$stmt = $pdo->prepare("SELECT * FROM KNW_TAGS");
+$stmt->execute();
+$tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -56,15 +73,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </form>
                 <div id="filtros">
-                <div class="dropdown">
-                    <button onclick="menuDropdown()" class="dropbtn"><img class="menu-usuario" src="../../assets/icon-dropdown.png" alt=""></button> <!-- mostra uma caixa de opcoes ao ser clicado -->
-                    <div id="pergunta-dropdown" class="dropdown-conteudo"> <!-- conteudo mostrado ao clicar no dropdown -->
-                        <p>conteudo</p>
-                    </div>
+                    <select class="tags" id="select-tags">
+                        <option value="">Adicionar tags</option>
+                        <?php foreach ($tags as $tag): ?>
+                            <option value="<?= $tag['TAG_ID'] ?>"><?= $tag['TAG_NOME'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div id="tags-selecionadas"></div>
                 </div>
             </div>
-        </div>
-        <div class="lateral-direita"></div>
+            <div class="lateral-direita"></div>
     </main>
     <script src="pagina-pergunta.js"></script>
 </body>
