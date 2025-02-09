@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Erro ao registrar pergunta.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -55,14 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </form>
                 <div id="filtros">
-                    <button class="btn-1">
-                        Disciplina
-                        <img src="../../assets/icon-dropdown.png" alt="botao-filtro">
-                    </button>
-                    <button class="btn-1">
-                        <p>Curso</p>
-                        <img src="../../assets/icon-dropdown.png" alt="botao-filtro">
-                    </button>
+                <div class="dropdown">
+                    <button onclick="menuDropdown()" class="dropbtn"><img class="menu-usuario" src="../../assets/icon-dropdown.png" alt=""></button> <!-- mostra uma caixa de opcoes ao ser clicado -->
+                    <div id="pergunta-dropdown" class="dropdown-conteudo"> <!-- conteudo mostrado ao clicar no dropdown -->
+                        <p>conteudo</p>
+                    </div>
                 </div>
             </div>
         </div>

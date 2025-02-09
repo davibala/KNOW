@@ -29,11 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const secaoRespostas = document.getElementById('secao-respostas');
     const tituloSecao = document.getElementById('titulo-secao');
 
+    btnPerguntas.classList.add('ativo'); // Adiciona a classe ativo ao botão de perguntas
+    secaoRespostas.style.display = 'none'; // Oculta a seção de respostas
+
+
     // Exibir perguntas e ocultar respostas
     btnPerguntas.addEventListener('click', function () {
         secaoPerguntas.style.display = 'block';
         secaoRespostas.style.display = 'none';
         tituloSecao.textContent = 'Minhas perguntas';
+        btnPerguntas.classList.add('ativo'); // Adiciona a classe ativo ao botão de perguntas
+        btnRespostas.classList.remove('ativo'); // Remove a classe ativo do botão de respostas
     });
 
     // Exibir respostas e ocultar perguntas
@@ -41,23 +47,19 @@ document.addEventListener('DOMContentLoaded', function () {
         secaoPerguntas.style.display = 'none';
         secaoRespostas.style.display = 'block';
         tituloSecao.textContent = 'Minhas respostas';
+        btnRespostas.classList.add('ativo'); // Adiciona a classe ativo ao botão de respostas
+        btnPerguntas.classList.remove('ativo'); // Remove a classe ativo do botão de perguntas
     });
 });
 
-btnPerguntas.addEventListener('click', function () { // Adiciona um evento de clique ao botão de perguntas
-    secaoPerguntas.style.display = 'block'; // Exibe a seção de perguntas
-    secaoRespostas.style.display = 'none'; // Oculta a seção de respostas
-    tituloSecao.textContent = 'Minhas perguntas'; // Altera o título da seção
-    btnPerguntas.classList.add('ativo'); // Adiciona a classe ativo ao botão de perguntas
-    btnRespostas.classList.remove('ativo'); // Remove a classe ativo do botão de respostas
-});
+function msgErro(dropdownId) {
+    // Seleciona o dropdown pelo ID único
+    const dropdown = document.getElementById(dropdownId);
 
-btnRespostas.addEventListener('click', function () { // Adiciona um evento de clique ao botão de respostas
-    secaoPerguntas.style.display = 'none'; // Oculta a seção de perguntas
-    secaoRespostas.style.display = 'block'; // Exibe a seção de respostas
-    tituloSecao.textContent = 'Minhas respostas'; // Altera o título da seção
-    btnRespostas.classList.add('ativo'); // Adiciona a classe ativo ao botão de respostas
-    btnPerguntas.classList.remove('ativo'); // Remove a classe ativo do botão de perguntas
-});
-
-btnPerguntas.classList.add('ativo'); // Adiciona a classe ativo ao botão de perguntas
+    // Alterna a visibilidade do dropdown
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
+}

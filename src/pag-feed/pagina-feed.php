@@ -44,7 +44,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button onclick="menuDropdown()" class="dropbtn"><img class="menu-usuario" src="../../assets/icon-dropdown.png" alt=""></button> <!-- mostra uma caixa de opcoes ao ser clicado -->
                     <div id="perfil-dropdown" class="dropdown-conteudo"> <!-- conteudo mostrado ao clicar no dropdown -->
                         <a href="../pag-perfil/pagina-perfil.php">Perfil</a>
-                        <a href="../">Sair</a>
+                        <a href="sair.php">Sair</a>
                     </div>
                 </div>
                 <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">

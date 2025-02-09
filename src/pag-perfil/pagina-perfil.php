@@ -19,7 +19,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC); // Armazena as perguntas em um a
 // Carrega respostas do usuário
 $stmt = $pdo->prepare("SELECT * FROM knw_resposta
                               WHERE RES_USU_NOME = ?");
-$stmt->execute([$_SESSION['usuario']]); 
+$stmt->execute([$_SESSION['usuario']]);
 $respostas = $stmt->fetchAll(PDO::FETCH_ASSOC); // Armazena as respostas em um array associativo
 
 // Carrega o perfil do usuário
@@ -76,55 +76,62 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
             </div>
             <div class="container-perguntas-respotas">
                 <h2 id="titulo-secao">Minhas perguntas</h2>
-                
+
                 <div class="conteudo">
                     <!-- Seção de perguntas -->
                     <div id="secao-perguntas">
-                        <?php foreach ($perguntas as $pergunta): ?>
-                            <?php
-                            $stmt = $pdo->prepare("SELECT COUNT(*) AS total_respostas FROM knw_resposta WHERE RES_PER_ID = ?");
-                            $stmt->execute([$pergunta['PER_ID']]);
-                            $total_respostas = $stmt->fetch(PDO::FETCH_ASSOC)['total_respostas'];
-                            $tem_respostas = $total_respostas > 0;
-                            ?>
-                            <div class='post'>
-                                <div class="flex-tit-opcoes">
-                                    <h3><?= htmlspecialchars($pergunta['PER_TITULO']) ?></h3>
-                                    <div class="dropdown">
-                                        <button onclick="menuDropdown('dropdown-<?= $pergunta['PER_ID'] ?>')"
-                                            class="dropbtn">
-                                            <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
-                                        </button>
-                                        <!-- Usa o ID único para o dropdown -->
-                                        <div id="dropdown-<?= $pergunta['PER_ID']?>" class="dropdown-conteudo">
-                                            <?php if (!$tem_respostas): ?>
-                                                <a href="#">Editar</a>
-                                                <form action="excluir_pergunta.php" method="POST">
-                                                    <input type="hidden" name="pergunta_id" value="<?= $pergunta['PER_ID'] ?>">
-                                                    <button type="submit" class="btn-excluir">Excluir</button>
-                                                </form>
-                                            <?php else: ?>
-                                                <span class="disabled-link" styles="background-color: gray;">Editar</span>
-                                                <span class="disabled-link">Excluir</span>
-                                            <?php endif; ?>
+                        <?php if (count($perguntas) > 0): ?>
+                            <?php foreach ($perguntas as $pergunta): ?>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT COUNT(*) AS total_respostas FROM knw_resposta WHERE RES_PER_ID = ?");
+                                $stmt->execute([$pergunta['PER_ID']]);
+                                $total_respostas = $stmt->fetch(PDO::FETCH_ASSOC)['total_respostas'];
+                                $tem_respostas = $total_respostas > 0;
+                                ?>
+                                <div class='post'>
+                                    <div class="flex-tit-opcoes">
+                                        <h3><?= htmlspecialchars($pergunta['PER_TITULO']) ?></h3>
+                                        <div class="dropdown">
+                                            <button onclick="menuDropdown('dropdown-<?= $pergunta['PER_ID'] ?>')"
+                                                class="dropbtn">
+                                                <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
+                                            </button>
+                                            <!-- Usa o ID único para o dropdown -->
+                                            <div id="dropdown-<?= $pergunta['PER_ID'] ?>" class="dropdown-conteudo">
+                                                <?php if (!$tem_respostas): ?>
+                                                    <a class='btn-excluir'
+                                                        href="../pag-edicao/pagina-edicao.php?id=<?= $pergunta['PER_ID'] ?>">
+                                                        <button>Editar</button>
+                                                    </a>
+                                                    <form action="excluir_pergunta.php" method="POST">
+                                                        <input type="hidden" name="pergunta_id" value="<?= $pergunta['PER_ID'] ?>">
+                                                        <button type="submit" class="btn-excluir">Excluir</button>
+                                                    </form>
+                                                <?php else: ?>
+                                                    <span class="disabled-link" styles="background-color: gray;">Editar</span>
+                                                    <span class="disabled-link">Excluir</span>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class='conteudo-pergunta'>
-                                    <p>b<?= htmlspecialchars($pergunta['PER_DESCRICAO']) ?></p>
-                                </div>
-                                <div class='flex-tag-respostas'>
-                                    <div class='tags'>
-                                        <div class='tag tag-um'>IPI</div>
-                                        <div class='tag tag-dois'>Lógica de programação</div>
+                                    <div class='conteudo-pergunta'>
+                                        <p><?= htmlspecialchars($pergunta['PER_DESCRICAO']) ?></p>
                                     </div>
-                                    <a class='btn-1 btn-respostas'
-                                        href="../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>">
-                                        <button>Ver respostas</button>
-                                    </a>
+                                    <div class='flex-tag-respostas'>
+                                        <div class='tags'>
+                                            <div class='tag tag-um'>IPI</div>
+                                            <div class='tag tag-dois'>Lógica de programação</div>
+                                        </div>
+                                        <a class='btn-1 btn-respostas'
+                                            href="../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>">
+                                            <button>Ver respostas</button>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="msg-erro">Nenhuma pergunta encontrada.</p>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Seção de respostas -->
@@ -140,10 +147,11 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                     <div class="flex-tit-opcoes">
                                         <h3>Resposta para: <?= htmlspecialchars($pergunta['PER_TITULO']) ?></h3>
                                         <div class="dropdown">
-                                            <button onclick="menuDropdown('dropdown-<?= $resposta['RES_ID'] ?>')" class="dropbtn">
+                                            <button onclick="menuDropdown('dropdown-<?= $resposta['RES_ID'] ?>')"
+                                                class="dropbtn">
                                                 <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
                                             </button>
-                                            <div id="dropdown-<?= $resposta['RES_ID'] ?>" class="dropdown-conteudo">    
+                                            <div id="dropdown-<?= $resposta['RES_ID'] ?>" class="dropdown-conteudo">
                                                 <a href="#">Editar</a>
                                                 <!-- Adicionar um formulário para exclusão -->
                                                 <form action="excluir_resposta.php" method="POST">

@@ -2,6 +2,11 @@
 require_once 'db.php';
 session_start();
 
+if (isset($_SESSION['usuario'])) {
+    header('Location: /src/pag-feed/pagina-feed.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $credencial = $_POST['credencial'];
     $senha = $_POST['senha'];
