@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare("INSERT INTO knw_usuarios (USU_NOME, USU_EMAIL, USU_SENHA) VALUES (?, ?, ?)");
         if ($stmt->execute([$nome, $email, $senha])) {
             $_SESSION['usuario'] = $nome;
+            $_SESSION['logado'] = true;
             header('Location: ../pag-feed/pagina-feed.php');
         } else {
             echo "Erro ao registrar usuário.";
