@@ -3,17 +3,32 @@ require_once '../db.php';
 session_start();
 if (!$_SESSION['logado']) {
     header('Location: ../index.php');
+    exit();
 }
 
 $pesquisa = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : '';
+$tag_filtro = isset($_GET['tag']) ? $_GET['tag'] : '';
 
-$stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS FROM knw_pergunta
-                              WHERE PER_TITULO 
-                              LIKE ? OR PER_DESCRICAO LIKE ?");
-$stmt->execute(["%$pesquisa%", "%$pesquisa%"]);
+// Carregar todas as tags
+$stmt = $pdo->prepare("SELECT * FROM KNW_TAGS");
+$stmt->execute();
+$tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Filtrar perguntas com base na tag selecionada
+if ($tag_filtro) {
+    $stmt = $pdo->prepare("SELECT p.*, TIMESTAMPDIFF(MINUTE, p.PER_DATA, NOW()) AS DIFERENCA_MINUTOS 
+                           FROM knw_pergunta p
+                           JOIN PERGUNTA_TAGS pt ON p.PER_ID = pt.PER_ID
+                           WHERE pt.TAG_ID = ? AND (p.PER_TITULO LIKE ? OR p.PER_DESCRICAO LIKE ?)");
+    $stmt->execute([$tag_filtro, "%$pesquisa%", "%$pesquisa%"]);
+} else {
+    $stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS 
+                           FROM knw_pergunta
+                           WHERE PER_TITULO LIKE ? OR PER_DESCRICAO LIKE ?");
+    $stmt->execute(["%$pesquisa%", "%$pesquisa%"]);
+}
 
 $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +51,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <form class="container-pesquisa" method="GET">
                 <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar"
                     value="<?= $pesquisa ?>"> <!-- Guarda dentro do campo de pesquisa o valor que foi pesquisado  -->
-                <button class="icone-pesquisa btn-1" type="submit"><img src="../../assets/icon-pesquisa.png"
+                <button class="icone-pesquisa" type="submit"><img src="../../assets/icon-pesquisa.png"
                         alt="icone-pesquisa"></button>
             </form>
             <div class="container-usuario">
@@ -55,7 +70,17 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </header>
     <main>
-        <div class="lateral-esquerda"></div>
+        <div class="lateral-esquerda">
+            <h3 class="tit-tags">TAGS</h3>
+            <br>
+            <div class="lista-tags">
+                <?php foreach ($tags as $tag): ?>
+                    <a href="pagina-feed.php?tag=<?= $tag['TAG_ID'] ?>" class="tag-link">
+                        <?= htmlspecialchars($tag['TAG_NOME']) ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
         <div class="container">
             <div class="flex-titulo-pergunta">
                 <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2>

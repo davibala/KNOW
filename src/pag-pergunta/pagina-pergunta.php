@@ -3,26 +3,34 @@ require_once '../db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Captura os dados da pergunta
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
     $nome = $_SESSION['usuario'];
-    $tags = isset($_POST['tags']) ? explode(',', $_POST['tags']) : []; // Converte a string de tags em um array
+    $tags = isset($_POST['tags']) ? explode(',', $_POST['tags']) : [];
 
-    // Insere a pergunta no banco de dados
+    // Insere a pergunta
     $stmt = $pdo->prepare("INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES (?, ?, ?)");
     if ($stmt->execute([$titulo, $descricao, $nome])) {
-        $perguntaId = $pdo->lastInsertId(); // Captura o ID da pergunta inserida
+        $perguntaId = $pdo->lastInsertId();
 
         // Associa as tags à pergunta
         if (!empty($tags)) {
             foreach ($tags as $tagId) {
-                $stmt = $pdo->prepare("INSERT INTO PERGUNTA_TAGS (PER_ID, TAG_ID) VALUES (?, ?)");
-                $stmt->execute([$perguntaId, $tagId]);
+                // Verifica se a tag existe
+                $stmt = $pdo->prepare("SELECT COUNT(*) FROM knw_tags WHERE TAG_ID = ?");
+                $stmt->execute([$tagId]);
+                $exists = $stmt->fetchColumn();
+
+                if ($exists) {
+                    $stmt = $pdo->prepare("INSERT INTO pergunta_tags (PER_ID, TAG_ID) VALUES (?, ?)");
+                    $stmt->execute([$perguntaId, $tagId]);
+                } else {
+                    echo "Erro: A tag com ID $tagId não existe.";
+                }
             }
         }
 
-        header('Location: ../pag-feed/pagina-feed.php'); // Redireciona após o sucesso
+        header('Location: ../pag-feed/pagina-feed.php');
     } else {
         echo "Erro ao registrar pergunta.";
     }

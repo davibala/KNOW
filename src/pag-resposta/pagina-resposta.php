@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="lateral-esquerda"></div>
         <div class="container">
-            <h2 class="titulo-pergunta"><?= $pergunta['PER_TITULO']; ?></h2>
+            <h2 class="titulo-pergunta"><?= $pergunta['PER_TITULO']; ?></h2> 
             <hr>
             <div class="pergunta">
                 <p class="corpo-pergunta"><?= $pergunta['PER_DESCRICAO']; ?></p>

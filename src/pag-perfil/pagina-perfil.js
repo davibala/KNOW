@@ -1,8 +1,14 @@
 function menuDropdown(dropdownId) {
-    // Seleciona o dropdown pelo ID único
-    const dropdown = document.getElementById(dropdownId);
+    // Fecha todos os dropdowns abertos
+    const dropdowns = document.querySelectorAll('.dropdown-conteudo');
+    dropdowns.forEach(dropdown => {
+        if (dropdown.id !== dropdownId) {
+            dropdown.style.display = 'none';
+        }
+    });
 
-    // Alterna a visibilidade do dropdown
+    // Abre ou fecha o dropdown clicado
+    const dropdown = document.getElementById(dropdownId);
     if (dropdown.style.display === 'block') {
         dropdown.style.display = 'none';
     } else {
@@ -50,6 +56,15 @@ document.addEventListener('DOMContentLoaded', function () {
         btnRespostas.classList.add('ativo'); // Adiciona a classe ativo ao botão de respostas
         btnPerguntas.classList.remove('ativo'); // Remove a classe ativo do botão de perguntas
     });
+
+    const disabledLinks = document.querySelectorAll('.disabled-link');
+    disabledLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            event.stopPropagation(); // Impede a propagação do evento
+        });
+    });
+
 });
 
 function msgErro(dropdownId) {

@@ -70,7 +70,9 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                     </div>
                     <div class="flex-edi-sai">
                         <button class="btn-1 btn-editar-perfil">Editar perfil</button>
-                        <button class="btn-1 btn-sair">Sair</button>
+                        <a class="btn-sair" href="../pag-feed/sair.php">
+                            <button class="btn-btn-sair">Sair</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -92,12 +94,12 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                     <div class="flex-tit-opcoes">
                                         <h3><?= htmlspecialchars($pergunta['PER_TITULO']) ?></h3>
                                         <div class="dropdown">
-                                            <button onclick="menuDropdown('dropdown-<?= $pergunta['PER_ID'] ?>')"
+                                            <button onclick="menuDropdown('dropdown-pergunta-<?= $pergunta['PER_ID'] ?>')"
                                                 class="dropbtn">
                                                 <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
                                             </button>
                                             <!-- Usa o ID único para o dropdown -->
-                                            <div id="dropdown-<?= $pergunta['PER_ID'] ?>" class="dropdown-conteudo">
+                                            <div id="dropdown-pergunta-<?= $pergunta['PER_ID'] ?>" class="dropdown-conteudo">
                                                 <?php if (!$tem_respostas): ?>
                                                     <a class='btn-excluir'
                                                         href="../pag-edicao/pagina-edicao.php?id=<?= $pergunta['PER_ID'] ?>">
@@ -108,8 +110,17 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                                         <button type="submit" class="btn-excluir">Excluir</button>
                                                     </form>
                                                 <?php else: ?>
-                                                    <span class="disabled-link" styles="background-color: gray;">Editar</span>
-                                                    <span class="disabled-link">Excluir</span>
+                                                    <div class="tooltip">
+                                                        <p class="disabled-link">
+                                                            Editar
+                                                        </p>
+                                                        <p class="disabled-link">
+                                                            Excluir
+                                                        </p>
+                                                        <p class="tooltiptext">
+                                                            Você não pode editar/excluir esta pergunta pois já foi respondida.
+                                                        </p>
+                                                    </div>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -119,8 +130,20 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                     </div>
                                     <div class='flex-tag-respostas'>
                                         <div class='tags'>
-                                            <div class='tag tag-um'>IPI</div>
-                                            <div class='tag tag-dois'>Lógica de programação</div>
+                                            <?php
+                                            $stmt = $pdo->prepare("SELECT * FROM PERGUNTA_TAGS WHERE PER_ID = ?");
+                                            $stmt->execute([$pergunta['PER_ID']]);
+                                            $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                            ?>
+
+                                            <?php foreach ($tags as $tag): ?>
+                                                <?php
+                                                $stmt = $pdo->prepare("SELECT * FROM KNW_TAGS WHERE TAG_ID = ?");
+                                                $stmt->execute([$tag['TAG_ID']]);
+                                                $tagNome = $stmt->fetch(PDO::FETCH_ASSOC);
+                                                ?>
+                                                <p class="tag tag-cor"><?= $tagNome['TAG_NOME'] ?></p>
+                                            <?php endforeach; ?>
                                         </div>
                                         <a class='btn-1 btn-respostas'
                                             href="../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>">
@@ -147,11 +170,11 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                     <div class="flex-tit-opcoes">
                                         <h3>Resposta para: <?= htmlspecialchars($pergunta['PER_TITULO']) ?></h3>
                                         <div class="dropdown">
-                                            <button onclick="menuDropdown('dropdown-<?= $resposta['RES_ID'] ?>')"
+                                            <button onclick="menuDropdown('dropdown-resposta-<?= $resposta['RES_ID'] ?>')"
                                                 class="dropbtn">
                                                 <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
                                             </button>
-                                            <div id="dropdown-<?= $resposta['RES_ID'] ?>" class="dropdown-conteudo">
+                                            <div id="dropdown-resposta-<?= $resposta['RES_ID'] ?>" class="dropdown-conteudo">
                                                 <a href="#">Editar</a>
                                                 <!-- Adicionar um formulário para exclusão -->
                                                 <form action="excluir_resposta.php" method="POST">

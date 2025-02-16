@@ -1,30 +1,25 @@
 <?php 
 
-require_once('../db.php');
-session_start(); // Iniciar sessão
+require_once '../db.php'; // Conexão com o banco de dados
+session_start();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $perguntaId = $_POST['pergunta_id']; // ID da pergunta a ser excluída
 
-if (isset($_POST['pergunta_id'])) {
-    $pergunta_id = $_POST['pergunta_id'];
+    try {
+        // Exclui os registros associados na tabela pergunta_tags
+        $stmt = $pdo->prepare("DELETE FROM pergunta_tags WHERE PER_ID = ?");
+        $stmt->execute([$perguntaId]);
 
-    // Verificar se a resposta pertence ao usuário logado
-    $stmt = $pdo->prepare("SELECT PER_USU_NOME FROM KNW_PERGUNTA WHERE PER_ID = ?");
-    $stmt->execute([$pergunta_id]);
-    $pergunta = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Exclui a pergunta
+        $stmt = $pdo->prepare("DELETE FROM knw_pergunta WHERE PER_ID = ?");
+        $stmt->execute([$perguntaId]);
 
-    if ($pergunta && $pergunta['PER_USU_NOME'] == $_SESSION['usuario']) {
-        // Excluir a pergunta
-        $stmt = $pdo->prepare("DELETE FROM KNW_PERGUNTA WHERE PER_ID = ?");
-        $stmt->execute([$pergunta_id]);
-
-        // Redirecionar de volta para a página de perfil
+        // Redireciona de volta ao perfil
         header('Location: pagina-perfil.php');
-        exit();
-    } else {
-        echo "Você não tem permissão para excluir esta pergunta.";
+    } catch (PDOException $e) {
+        echo "Erro ao excluir pergunta: " . $e->getMessage();
     }
-} else {
-    echo "ID da pergunta não fornecido.";
 }
 
 ?>

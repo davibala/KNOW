@@ -21,7 +21,6 @@ $stmt = $pdo->prepare("SELECT * FROM knw_pergunta WHERE PER_ID = ?");
 $stmt->execute([$pergunta_id]); // Execute a consulta
 $pergunta = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch para obter apenas uma pergunta
 
-
 // Processa o formulário de edição
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'];

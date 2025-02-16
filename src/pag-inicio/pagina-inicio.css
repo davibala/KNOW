@@ -29,7 +29,8 @@
     color: #000000;
     outline: 0;
     padding: 6px 0px 0px 10px;
-    background: #e5e5e5
+    background: #e5e5e5;
+    
 }
 
 #btn-entrar {
@@ -73,6 +74,7 @@
     font-size: 20px;
     position: absolute;
     top: 77.30%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .img-inicio {
