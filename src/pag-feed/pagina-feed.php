@@ -57,7 +57,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </form>
             <div class="container-usuario">
                 <div class="dropdown">
-                    <button onclick="menuDropdown()" class="dropbtn"><img class="menu-usuario"
+                    <button onclick="menuDropdown('perfil-dropdown')" class="dropbtn"><img class="menu-usuario"
                             src="../../assets/icon-dropdown.png" alt=""></button>
                     <!-- mostra uma caixa de opcoes ao ser clicado -->
                     <div id="perfil-dropdown" class="dropdown-conteudo">
@@ -72,23 +72,32 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
     <main>
         <div class="lateral-esquerda">
-            <h3 class="tit-tags">TAGS</h3>
-            <br>
-            <div class="lista-tags">
-                <?php foreach ($tags as $tag): ?>
-                    <a href="pagina-feed.php?tag=<?= $tag['TAG_ID'] ?>" class="tag-link">
-                        <?= htmlspecialchars($tag['TAG_NOME']) ?>
-                    </a>
-                <?php endforeach; ?>
-            </div>
         </div>
         <div class="container">
             <div class="flex-titulo-pergunta">
                 <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2>
-                <!-- exibi o nome do usuario que esta salvo na sessao -->
-                <a class="btn-pergunta btn-1" href="../pag-pergunta/pagina-pergunta.php">
-                    <button>Faça uma pergunta</button>
-                </a>
+                <div class="flex-filt-btn">
+                    <div class="flex-tit-dropdown">
+                        <h3 class="tit-tags">Filtros</h3>
+                        <div class="dropdown">
+                            <button onclick="menuDropdown('filtro-dropdown')" class="dropbtn">
+                                <img class="menu-usuario" src="../../assets/icon-dropdown.png" alt="">
+                            </button>
+                            <div id="filtro-dropdown" class="dropdown-conteudo">
+                                <div class="lista-tags">
+                                    <?php foreach ($tags as $tag): ?>
+                                        <a href="pagina-feed.php?tag=<?= $tag['TAG_ID'] ?>" class="tag-link">
+                                            <?= htmlspecialchars($tag['TAG_NOME']) ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn-pergunta btn-1" href="../pag-pergunta/pagina-pergunta.php">
+                        <button>Faça uma pergunta</button>
+                    </a>
+                </div>
             </div>
             <?php if (count($perguntas) > 0): ?> <!-- verifica se há perguntas cadastradas -->
                 <?php foreach ($perguntas as $pergunta): ?> <!-- itera sobre as perguntas -->
@@ -117,20 +126,20 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p class='conteudo-pergunta'><?= $pergunta['PER_DESCRICAO'] ?></p> <!-- exibi o conteudo da pergunta -->
                         <div class='flex-tag-responder'>
                             <div class='tags'>
-                                    <?php
-                                    $stmt = $pdo->prepare("SELECT * FROM PERGUNTA_TAGS WHERE PER_ID = ?");
-                                    $stmt->execute([$pergunta['PER_ID']]);
-                                    $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                    ?>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM PERGUNTA_TAGS WHERE PER_ID = ?");
+                                $stmt->execute([$pergunta['PER_ID']]);
+                                $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                ?>
 
-                                    <?php foreach ($tags as $tag): ?>
-                                        <?php
-                                            $stmt = $pdo->prepare("SELECT * FROM KNW_TAGS WHERE TAG_ID = ?");
-                                            $stmt->execute([$tag['TAG_ID']]);
-                                            $tagNome = $stmt->fetch(PDO::FETCH_ASSOC);
-                                        ?>
-                                        <p class="tag tag-cor"><?= $tagNome['TAG_NOME'] ?></p>
-                                    <?php endforeach; ?>
+                                <?php foreach ($tags as $tag): ?>
+                                    <?php
+                                    $stmt = $pdo->prepare("SELECT * FROM KNW_TAGS WHERE TAG_ID = ?");
+                                    $stmt->execute([$tag['TAG_ID']]);
+                                    $tagNome = $stmt->fetch(PDO::FETCH_ASSOC);
+                                    ?>
+                                    <p class="tag tag-cor"><?= $tagNome['TAG_NOME'] ?></p>
+                                <?php endforeach; ?>
                             </div>
                             <a class='btn-1 btn-responder'
                                 href='../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>'>

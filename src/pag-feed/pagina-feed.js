@@ -1,10 +1,22 @@
-// script.js
-function menuDropdown() {
-    document.getElementById("perfil-dropdown").classList.toggle("show");
+function menuDropdown(dropdownId) {
+    // Fecha todos os dropdowns abertos
+    const dropdowns = document.querySelectorAll('.dropdown-conteudo');
+    dropdowns.forEach(dropdown => {
+        if (dropdown.id !== dropdownId) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    // Abre ou fecha o dropdown clicado
+    const dropdown = document.getElementById(dropdownId);
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
 }
 
-// Fechar o dropdown se o usuário clicar fora dele
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-conteudo");
         for (var i = 0; i < dropdowns.length; i++) {
