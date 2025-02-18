@@ -16,14 +16,12 @@ function menuDropdown(dropdownId) {
     }
 }
 
+// Fecha o dropdown ao clicar fora dele
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-conteudo");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
+        const dropdowns = document.querySelectorAll('.dropdown-conteudo');
+        dropdowns.forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
     }
-}
+};

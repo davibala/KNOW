@@ -3,18 +3,15 @@ function menuDropdown() { // Função para abrir e fechar o dropdown
     document.getElementById("pergunta-dropdown").classList.toggle("show"); // Adicionar ou remover a classe 'show' do dropdown
 }
 
-// Fechar o dropdown se o usuário clicar fora dele
-window.onclick = function(event) { // Adicionar um evento de clique na janela
-    if (!event.target.matches('.dropbtn')) { // Se o usuário clicar fora do botão
-        var dropdowns = document.getElementsByClassName("dropdown-conteudo"); // Encontrar todos os dropdowns
-        for (var i = 0; i < dropdowns.length; i++) { // Para cada dropdown
-            var openDropdown = dropdowns[i]; // Atribuir o dropdown atual
-            if (openDropdown.classList.contains('show')) { // Se o dropdown estiver aberto
-                openDropdown.classList.remove('show'); // Fechar o dropdown
-            }
-        }
+// Fecha o dropdown ao clicar fora dele
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        const dropdowns = document.querySelectorAll('.dropdown-conteudo');
+        dropdowns.forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
     }
-}
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     const selectTags = document.getElementById('select-tags');
