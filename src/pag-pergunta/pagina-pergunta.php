@@ -84,7 +84,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <select class="tags" id="select-tags">
                         <option value="">Adicionar tags</option>
                         <?php foreach ($tags as $tag): ?>
-                            <option value="<?= $tag['TAG_ID'] ?>"><?= $tag['TAG_NOME'] ?></option>
+                            <option class="tag" value="<?= $tag['TAG_ID'] ?>"><?= $tag['TAG_NOME'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <div id="tags-selecionadas"></div>

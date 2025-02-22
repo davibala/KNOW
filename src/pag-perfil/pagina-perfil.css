@@ -115,6 +115,7 @@
 
 .opcoes {
     width: 16px;
+    pointer-events: none;
 }
 
 .conteudo-pergunta {

@@ -27,10 +27,15 @@
     font-size: 14px;
     box-sizing: border-box;
     color: #000000;
+    border: 2px solid #26262640;
     outline: 0;
-    padding: 6px 0px 0px 10px;
+    padding: 0px 0px 0px 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
     background: #e5e5e5;
-    
+}
+
+.campo-email:hover , .campo-senha:hover {
+    border: 2px solid #262626c3;
 }
 
 #btn-entrar {

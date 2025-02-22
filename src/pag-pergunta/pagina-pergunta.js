@@ -1,9 +1,9 @@
-// script.js
-function menuDropdown() { // Função para abrir e fechar o dropdown
-    document.getElementById("pergunta-dropdown").classList.toggle("show"); // Adicionar ou remover a classe 'show' do dropdown
+
+
+function menuDropdown() {
+    document.getElementById("pergunta-dropdown").classList.toggle("show");
 }
 
-// Fecha o dropdown ao clicar fora dele
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         const dropdowns = document.querySelectorAll('.dropdown-conteudo');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tagElement.className = 'tag';
             tagElement.innerHTML = `
                 ${tagNome}
-                <button type="button" onclick="removerTag('${tagId}')">X</button>
+                <button type="button" onclick="removerTag('${tagId}')">×</button>
             `;
             tagsSelecionadas.appendChild(tagElement);
         }

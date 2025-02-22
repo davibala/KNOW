@@ -17,6 +17,8 @@
 .txt-faca-uma-pergunta {
     position: relative;
     left: 8.76%;
+    
+    text-wheight: 600;
 }
 
 .pergunta-container {
@@ -110,14 +112,22 @@
 }
 
 .tags {
-    background-color: #ffffff;
+    background-color: #13568E;
+    color: white;
+    border: none;
     border-radius: 10px;
     padding: 1% 1% 1% 1%;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
 }
 
+
 .img-close {
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
 }
 
 #tags-selecionadas {
@@ -125,20 +135,39 @@
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 10px;
+    font-weight: 600;
+    font-family: Poppins;
+    
 }
 
+
 .tag {
-    background-color: #e0e0e0;
+    background-color: #225f8e;
+    color: white;
     padding: 5px 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     gap: 5px;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    
 }
 
 .tag button {
-    background: none;
-    border: none;
+    text-align: center;
     cursor: pointer;
-    color: #ff0000;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0 2px 3px 2px;
+}
+
+.tag button:hover {
+    color: #ff4d4d;
 }

@@ -30,6 +30,7 @@
     padding: 10px;
     border-radius: 56px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    outline: none   ;
 }
 
 .campo-pesquisa:hover {
@@ -95,6 +96,10 @@
 .titulo-pergunta {
     font-weight: 600;
     margin: 1% 0 1% 0;
+}
+
+.menu-usuario {
+    pointer-events: none;
 }
 
 .conteudo-pergunta {
