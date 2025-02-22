@@ -147,7 +147,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                         </div>
                                         <a class='btn-1 btn-respostas'
                                             href="../pag-resposta/pagina-resposta.php?id=<?= $pergunta['PER_ID'] ?>">
-                                            <button>Ver respostas</button>
+                                            <button id="btnper">Ver respostas</button>
                                         </a>
                                     </div>
                                 </div>
@@ -187,9 +187,9 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                     <div class='conteudo-pergunta'>
                                         <p><?= htmlspecialchars($resposta['RES_DESCRICAO']) ?></p>
                                     </div>
-                                    <a id="btn-perguntas" class='btn-1 btn-respostas'
+                                    <a id="btn-resposta" class='btn-1 btn-respostas'
                                         href="../pag-resposta/pagina-resposta.php?id=<?= $resposta['RES_PER_ID'] ?>">
-                                        <button id="btnper">Ver pergunta</button>
+                                        <button id="btnres">Ver pergunta</button>
                                     </a>
                                 </div>
                             <?php endforeach; ?>

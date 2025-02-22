@@ -73,6 +73,8 @@
 }
 
 .btn-pergunta button {
+    font-family: Poppins;
+    font-weight: 600;
     border: none;
     background: none;
     color: white;
@@ -98,7 +100,10 @@
     margin: 1% 0 1% 0;
 }
 
-.menu-usuario {
+.img-filtro {
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
     pointer-events: none;
 }
 
@@ -145,6 +150,8 @@
 
 .btn-responder button {
     border: none;
+    font-family: Poppins;
+    font-weight: 600;
     background: none;
     color: white;
 }

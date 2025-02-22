@@ -81,7 +81,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3 class="tit-tags">Filtros</h3>
                         <div class="dropdown">
                             <button onclick="menuDropdown('filtro-dropdown')" class="dropbtn">
-                                <img class="menu-usuario" src="../../assets/icon-dropdown.png" alt="">
+                                <img class="img-filtro" src="../../assets/icon-filtro.png" alt="">
                             </button>
                             <div id="filtro-dropdown" class="dropdown-conteudo">
                                 <div class="lista-tags">
@@ -89,7 +89,8 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <a href="pagina-feed.php?tag=<?= $tag['TAG_ID'] ?>" class="tag-link">
                                             <?= htmlspecialchars($tag['TAG_NOME']) ?>
                                         </a>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                        <a href="pagina-feed.php" class="tag-link">Limpar</a>
                                 </div>
                             </div>
                         </div>
@@ -105,8 +106,8 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="flex-usuario-nome-data">
                             <div class='flex-usuario-nome'>
                                 <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
-                                <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3>
                                 <!-- exibi o nome do usuario que fez a pergunta -->
+                                <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3>
                             </div>
                             <p class='data-pergunta'>
                                 <?php

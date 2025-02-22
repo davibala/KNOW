@@ -15,6 +15,16 @@
     display: flex;
 }
 
+#btnper {
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+#btnres {
+    font-family: Poppins;
+    font-weight: 600;
+}
+
 .container-usuario {
     width: 21%;
     height: 100%;
@@ -61,13 +71,6 @@
     white-space: nowrap;
 }
 
-.flex-tit-bus {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5%;
-}
-
 .container-perguntas-respotas {
     width: 100%;
     height: 100%;
@@ -106,11 +109,6 @@
 
 #titulo-secao {
     margin-bottom: 30px;
-}
-
-.titulo-pergunta {
-    font-weight: 600;
-    white-space: nowrap;
 }
 
 .opcoes {
@@ -169,16 +167,6 @@
     color: white;
 }
 
-.flex-usuario-nome-data {
-    display: flex;
-    justify-content: space-between;
-}
-
-.icone-usuario-post {
-    width: 50px;
-    height: 50px;
-}
-
 .dropbtn {
     background: none;
     color: white;
@@ -207,8 +195,7 @@
     left: -100px;
 }
 
-.dropdown-conteudo a,
-.dropdown-conteudo span {
+.dropdown-conteudo a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -282,8 +269,8 @@
     background-color: #275171;
 }
 
-#btn-perguntas {
-    margin-left: 84%;
+#btn-resposta {
+    margin-left: 83%;
     white-space: nowrap;
 }
 
