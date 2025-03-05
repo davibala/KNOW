@@ -30,6 +30,12 @@ if ($tag_filtro) {
 }
 
 $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare("SELECT * FROM knw_imagem WHERE IMG_USU_NOME = ?"); // Selecionar o usuário
+$stmt->execute([$_SESSION['usuario']]); // Executar a query
+$imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array associativo
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +63,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </form>
             <div class="container-usuario">
                 <div class="dropdown">
-                    <button onclick="menuDropdown('perfil-dropdown')" class="dropbtn"><img class="menu-usuario"
+                    <button onclick="menuDropdown('perfil-dropdown')" class="dropbtn"><img class="img-dropdown"
                             src="../../assets/icon-dropdown.png" alt=""></button>
                     <!-- mostra uma caixa de opcoes ao ser clicado -->
                     <div id="perfil-dropdown" class="dropdown-conteudo">
@@ -66,7 +72,11 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <a href="sair.php">Sair</a>
                     </div>
                 </div>
-                <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                <?php if (isset($imagens['IMG_CAMINHO'])): ?>
+                    <img class="icone-usuario" src="../../<?= $imagens['IMG_CAMINHO'] ?>" alt=".">
+                <?php else: ?>
+                    <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                <?php endif; ?>
             </div>
         </nav>
     </header>
@@ -78,7 +88,7 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2>
                 <div class="flex-filt-btn">
                     <div class="flex-tit-dropdown">
-                        <h3 class="tit-tags">Filtros</h3>
+                        <h3 class="tit-tags">Filtrar perguntas</h3>
                         <div class="dropdown">
                             <button onclick="menuDropdown('filtro-dropdown')" class="dropbtn">
                                 <img class="img-filtro" src="../../assets/icon-filtro.png" alt="">
@@ -89,8 +99,8 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <a href="pagina-feed.php?tag=<?= $tag['TAG_ID'] ?>" class="tag-link">
                                             <?= htmlspecialchars($tag['TAG_NOME']) ?>
                                         </a>
-                                        <?php endforeach; ?>
-                                        <a href="pagina-feed.php" class="tag-link">Limpar</a>
+                                    <?php endforeach; ?>
+                                    <a href="pagina-feed.php" class="tag-link">Limpar</a>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +115,18 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class='post'>
                         <div class="flex-usuario-nome-data">
                             <div class='flex-usuario-nome'>
-                                <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                                <?php
+
+                                $stmt = $pdo->prepare("SELECT * FROM knw_imagem WHERE IMG_USU_NOME = ?");
+                                $stmt->execute([$pergunta['PER_USU_NOME']]);
+                                $fotoPerfil = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                                ?>
+                                <?php if (isset($fotoPerfil['IMG_CAMINHO'])): ?>
+                                    <img class="icone-usuario" src="../../<?= $fotoPerfil['IMG_CAMINHO'] ?>" alt=".">
+                                <?php else: ?>
+                                    <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                                <?php endif; ?>
                                 <!-- exibi o nome do usuario que fez a pergunta -->
                                 <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3>
                             </div>

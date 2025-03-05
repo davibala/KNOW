@@ -1,5 +1,4 @@
 
-
 function menuDropdown() {
     document.getElementById("pergunta-dropdown").classList.toggle("show");
 }

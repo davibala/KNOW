@@ -61,6 +61,7 @@
 .icone-usuario {
     width: 50px;
     height: 100%;
+    border-radius: 56px;
 }
 
 .flex-titulo-pergunta {
@@ -93,6 +94,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.img-dropdown {
+    width: 18px;
+    height: 10px;
 }
 
 .titulo-pergunta {
