@@ -23,6 +23,30 @@
     height: 145%;
 }
 
+.btnForm {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.area-resposta {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    resize: vertical;
+    overflow-y: auto;
+}
+
+.area-resposta[placeholder]:empty::before {
+    content: attr(placeholder);
+    color: #888;
+    font-style: italic;
+}
+
 .titulo-pergunta {
     margin: 0 0 0 3%;
 }

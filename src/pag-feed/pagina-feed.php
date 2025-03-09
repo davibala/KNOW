@@ -20,12 +20,14 @@ if ($tag_filtro) {
     $stmt = $pdo->prepare("SELECT p.*, TIMESTAMPDIFF(MINUTE, p.PER_DATA, NOW()) AS DIFERENCA_MINUTOS 
                            FROM knw_pergunta p
                            JOIN PERGUNTA_TAGS pt ON p.PER_ID = pt.PER_ID
-                           WHERE pt.TAG_ID = ? AND (p.PER_TITULO LIKE ? OR p.PER_DESCRICAO LIKE ?)");
+                           WHERE pt.TAG_ID = ? AND (p.PER_TITULO LIKE ? OR p.PER_DESCRICAO LIKE ?)
+                           ORDER BY p.PER_DATA DESC"); // Ordenar por data decrescente
     $stmt->execute([$tag_filtro, "%$pesquisa%", "%$pesquisa%"]);
 } else {
     $stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS 
                            FROM knw_pergunta
-                           WHERE PER_TITULO LIKE ? OR PER_DESCRICAO LIKE ?");
+                           WHERE PER_TITULO LIKE ? OR PER_DESCRICAO LIKE ?
+                           ORDER BY PER_DATA DESC"); // Ordenar por data decrescente
     $stmt->execute(["%$pesquisa%", "%$pesquisa%"]);
 }
 
@@ -34,8 +36,6 @@ $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->prepare("SELECT * FROM knw_imagem WHERE IMG_USU_NOME = ?"); // Selecionar o usuário
 $stmt->execute([$_SESSION['usuario']]); // Executar a query
 $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array associativo
-
-
 ?>
 
 <!DOCTYPE html>
@@ -58,13 +58,13 @@ $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
             <form class="container-pesquisa" method="GET">
                 <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar"
                     value="<?= $pesquisa ?>"> <!-- Guarda dentro do campo de pesquisa o valor que foi pesquisado  -->
-                <button class="icone-pesquisa" type="submit"><img src="../../assets/icon-pesquisa.png"
+                <button class="icone-pesquisa" type="submit"><img src="../../assets/icons/icon-pesquisa.png"
                         alt="icone-pesquisa"></button>
             </form>
             <div class="container-usuario">
                 <div class="dropdown">
                     <button onclick="menuDropdown('perfil-dropdown')" class="dropbtn"><img class="img-dropdown"
-                            src="../../assets/icon-dropdown.png" alt=""></button>
+                            src="../../assets/icons/icon-dropdown.png" alt=""></button>
                     <!-- mostra uma caixa de opcoes ao ser clicado -->
                     <div id="perfil-dropdown" class="dropdown-conteudo">
                         <!-- conteudo mostrado ao clicar no dropdown -->
@@ -75,7 +75,7 @@ $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                 <?php if (isset($imagens['IMG_CAMINHO'])): ?>
                     <img class="icone-usuario" src="../../<?= $imagens['IMG_CAMINHO'] ?>" alt=".">
                 <?php else: ?>
-                    <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                    <img class="icone-usuario" src="../../assets/icons/icon-usuario.png" alt=".">
                 <?php endif; ?>
             </div>
         </nav>
@@ -85,13 +85,13 @@ $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
         </div>
         <div class="container">
             <div class="flex-titulo-pergunta">
-                <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?></h2>
+                <h2 class="titulo-inicial"><?php echo "Olá " . $_SESSION['usuario'] ?>!</h2>
                 <div class="flex-filt-btn">
                     <div class="flex-tit-dropdown">
                         <h3 class="tit-tags">Filtrar perguntas</h3>
                         <div class="dropdown">
                             <button onclick="menuDropdown('filtro-dropdown')" class="dropbtn">
-                                <img class="img-filtro" src="../../assets/icon-filtro.png" alt="">
+                                <img class="img-filtro" src="../../assets/icons/icon-filtro.png" alt="">
                             </button>
                             <div id="filtro-dropdown" class="dropdown-conteudo">
                                 <div class="lista-tags">
@@ -116,7 +116,6 @@ $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                         <div class="flex-usuario-nome-data">
                             <div class='flex-usuario-nome'>
                                 <?php
-
                                 $stmt = $pdo->prepare("SELECT * FROM knw_imagem WHERE IMG_USU_NOME = ?");
                                 $stmt->execute([$pergunta['PER_USU_NOME']]);
                                 $fotoPerfil = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -125,7 +124,7 @@ $imagens = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array as
                                 <?php if (isset($fotoPerfil['IMG_CAMINHO'])): ?>
                                     <img class="icone-usuario" src="../../<?= $fotoPerfil['IMG_CAMINHO'] ?>" alt=".">
                                 <?php else: ?>
-                                    <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                                    <img class="icone-usuario" src="../../assets/icons/icon-usuario.png" alt=".">
                                 <?php endif; ?>
                                 <!-- exibi o nome do usuario que fez a pergunta -->
                                 <h3 class='nome-usuario'><?= $pergunta['PER_USU_NOME'] ?></h3>

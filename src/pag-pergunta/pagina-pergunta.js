@@ -55,3 +55,30 @@ document.addEventListener('DOMContentLoaded', function() {
         this.appendChild(hiddenInput);
     });
 });
+
+
+function formatText(command) {
+    document.execCommand(command, false, null);
+    document.getElementById('descricao-pergunta').focus(); // Mantém o foco no campo de resposta
+}
+
+// Adiciona eventos de clique aos botões de formatação
+document.getElementById('btn-bold').addEventListener('click', () => formatText('bold'));
+document.getElementById('btn-italic').addEventListener('click', () => formatText('italic'));
+document.getElementById('btn-underline').addEventListener('click', () => formatText('underline'));
+
+// Captura o conteúdo do div antes de enviar o formulário
+document.querySelector('form').addEventListener('submit', function (e) {
+    const tituloDiv = document.getElementById('titulo-pergunta');
+    const descricaoDiv = document.getElementById('descricao-pergunta');
+    const perguntaTitulo = document.createElement('textarea');
+    const perguntaDescricao = document.createElement('textarea');
+    perguntaTitulo.name = 'titulo';
+    perguntaTitulo.style.display = 'none';
+    perguntaTitulo.value = tituloDiv.innerHTML;
+    this.appendChild(perguntaTitulo);
+    perguntaDescricao.name = 'descricao';
+    perguntaDescricao.style.display = 'none';
+    perguntaDescricao.value = descricaoDiv.innerHTML; // Captura o conteúdo formatado
+    this.appendChild(perguntaDescricao);
+});

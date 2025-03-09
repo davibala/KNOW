@@ -74,21 +74,30 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="container">
             <h2 class="txt-faca-uma-pergunta">Faça uma pergunta</h2>
             <div class="pergunta-container">
-                <form method="POST">
-                    <textarea class="pergunta-titulo" name="titulo" placeholder="título" required></textarea>
-                    <textarea class="pergunta-descricao" name="descricao" placeholder="Digite sua pergunta aqui..."
-                        required></textarea>
-                    <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
+                <form method="POST" class="form-pergunta">
+                    <div id="titulo-pergunta" class="area-titulo" contenteditable="true" placeholder="Digite o titulo aqui..."></div>
+                    <div id="descricao-pergunta" class="area-descricao" contenteditable="true" placeholder="Digite sua pergunta aqui..."></div>
+                    <div class="flex-formatacoes-btn">
+                        <div class="formatacoes">
+                            <button class="btnForm" type="button" id="btn-bold"><img class="icon"
+                                    src="../../assets/icons/icon-bold.png" alt="Negrito"></button>
+                            <button class="btnForm" type="button" id="btn-italic"><img class="icon" id="icon-italic"
+                                    src="../../assets/icons/icon-italic.png" alt="Itálico"></button>
+                            <button class="btnForm" type="button" id="btn-underline"><img class="icon"
+                                    src="../../assets/icons/icon-sublinhed.png" alt="Sublinhado"></button>
+                        </div>
+                        <div id="filtros">
+                            <select class="tags" id="select-tags">
+                                <option class="tag" value="">Adicionar tags</option>
+                                <?php foreach ($tags as $tag): ?>
+                                    <option class="tag" value="<?= $tag['TAG_ID'] ?>"><?= $tag['TAG_NOME'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div id="tags-selecionadas"></div>
+                        </div>
+                        <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
+                    </div>
                 </form>
-                <div id="filtros">
-                    <select class="tags" id="select-tags">
-                        <option value="">Adicionar tags</option>
-                        <?php foreach ($tags as $tag): ?>
-                            <option class="tag" value="<?= $tag['TAG_ID'] ?>"><?= $tag['TAG_NOME'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <div id="tags-selecionadas"></div>
-                </div>
             </div>
             <div class="lateral-direita"></div>
     </main>

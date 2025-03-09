@@ -368,10 +368,6 @@
     cursor: pointer;
 }
 
-.btn-editar-perfil:hover {
-    transform: scale(1.1);
-}
-
 .perfil-icon-usuario {
     width: 100%;
     height: 100%;

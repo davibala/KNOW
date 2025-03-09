@@ -110,7 +110,7 @@ $stmt = $pdo->prepare("SELECT IMG_CAMINHO FROM knw_imagem WHERE IMG_USU_NOME = ?
 $stmt->execute([$_SESSION['usuario']]);
 $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$fotoPerfilPadrao = '../../assets/icon-usuario.png'; // Caminho da imagem padrão
+$fotoPerfilPadrao = '../../assets/icons/icon-usuario.png'; // Caminho da imagem padrão
 $fotoPerfilUsuario = $imagem ? $imagem['IMG_CAMINHO'] : $fotoPerfilPadrao; // Define o caminho da imagem
 
 ?>
@@ -140,24 +140,24 @@ $fotoPerfilUsuario = $imagem ? $imagem['IMG_CAMINHO'] : $fotoPerfilPadrao; // De
             <img class="logo-know" src="../../assets/logo-know.png" alt="logo-know">
 
             <a class="btn-sair" href="../pag-feed/sair.php">
-                <img class="icon-sair" src="../../assets/icon-sair.png" alt="icon-sair">
+                <img class="icon-sair" src="../../assets/icons/icon-sair.png" alt="icon-sair">
             </a>
         </div>
     </header>
     <main>
         <div class="lateral-esquerda"></div>
         <div class="container">
-            <div class="container-usuario">
-                <div class="informacoes-usuario">
+            <div class="container-usuario" >
+                <div class="informacoes-usuario btn-editar-perfil">
                     <?php if (isset($imagem)): ?>
                         <img class="icone-usuario" src="<?= $fotoPerfilUsuario ?>" alt="">
                     <?php else: ?>
-                        <img class="icone-usuario" src="../../assets/icon-usuario.png" alt=".">
+                        <img class="icone-usuario" src="../../assets/icons/icon-usuario.png" alt=".">
                     <?php endif; ?>
                     <div class="flex-nome-config">
                         <h2 class="nome-usuario"><?= htmlspecialchars($usuario['USU_NOME']) ?></h2>
                         <button class="btn-editar-perfil">
-                            <img class="icon-config" src="../../assets/icon-cog.png" alt="">
+                            <img class="icon-config" src="../../assets/icons/icon-cog.png" alt="">
                         </button>
                     </div>
                     <p class="email-usuario"><?= htmlspecialchars($usuario['USU_EMAIL']) ?></p>
@@ -223,7 +223,7 @@ $fotoPerfilUsuario = $imagem ? $imagem['IMG_CAMINHO'] : $fotoPerfilPadrao; // De
                                         <div class="dropdown">
                                             <button onclick="menuDropdown('dropdown-pergunta-<?= $pergunta['PER_ID'] ?>')"
                                                 class="dropbtn">
-                                                <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
+                                                <img class="opcoes" src="../../assets/icons/icon-opcoes.png" alt="icon-opcoes">
                                             </button>
                                             <!-- Usa o ID único para o dropdown -->
                                             <div id="dropdown-pergunta-<?= $pergunta['PER_ID'] ?>" class="dropdown-conteudo">
@@ -299,7 +299,7 @@ $fotoPerfilUsuario = $imagem ? $imagem['IMG_CAMINHO'] : $fotoPerfilPadrao; // De
                                         <div class="dropdown">
                                             <button onclick="menuDropdown('dropdown-resposta-<?= $resposta['RES_ID'] ?>')"
                                                 class="dropbtn">
-                                                <img class="opcoes" src="../../assets/icon-opcoes.png" alt="icon-opcoes">
+                                                <img class="opcoes" src="../../assets/icons/icon-opcoes.png" alt="icon-opcoes">
                                             </button>
                                             <div id="dropdown-resposta-<?= $resposta['RES_ID'] ?>" class="dropdown-conteudo">
                                                 <a class="btn-excluir" href="#">Editar</a>

@@ -47,6 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+
+$stmt = $pdo->prepare("SELECT IMG_CAMINHO FROM knw_imagem WHERE IMG_USU_NOME = ?"); // Selecionar o usuário
+$stmt->execute([$pergunta['PER_USU_NOME']]); // Executar a query
+$imagem = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array associativo
+
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="lateral-esquerda"></div>
         <div class="container">
-            <h2 class="titulo-pergunta"><?= $pergunta['PER_TITULO']; ?></h2> 
+            <h2 class="titulo-pergunta"><?= $pergunta['PER_TITULO']; ?></h2>
             <hr>
             <div class="pergunta">
                 <p class="corpo-pergunta"><?= $pergunta['PER_DESCRICAO']; ?></p>
@@ -97,7 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                         ?>
                     </p>
-                    <div class="img-autor"></div>
+                    <?php if (isset($imagem['IMG_CAMINHO'])): ?>
+                        <img class="icone-usuario" src="../../<?= $imagem['IMG_CAMINHO'] ?>" alt=".">
+                    <?php else: ?>
+                        <img class="icone-usuario" src="../../assets/icons/icon-usuario.png" alt=".">
+                    <?php endif; ?>
                     <p class="nome-autor"><?= $pergunta['PER_USU_NOME']; ?></p>
                 </div>
             </div>
@@ -107,7 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php foreach ($respostas as $resposta): ?>
                         <div class='resposta'>
                             <div class='flex-usuario-nome'>
-                                <div class='icone-usuario'></div>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT IMG_CAMINHO FROM knw_imagem WHERE IMG_USU_NOME = ?");
+                                $stmt->execute([$resposta['RES_USU_NOME']]);
+                                $imagem = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <?php if (isset($imagem['IMG_CAMINHO'])): ?>
+                                    <img class='icone-usuario' src='../../<?= $imagem['IMG_CAMINHO'] ?>' alt='.'>
+                                <?php else: ?>
+                                    <img class='icone-usuario' src='../../assets/icons/icon-usuario.png' alt='.'>
+                                <?php endif; ?>
                                 <h3 class='nome-usuario'><?= $resposta['RES_USU_NOME'] ?></h3>
                             </div>
                             <p class='conteudo-resposta'><?= $resposta['RES_DESCRICAO'] ?></p>
@@ -121,20 +139,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2 class="titulo-sua-resposta">Seja o primeiro a responder esta pergunta!</h2>
             <?php endif; ?>
             <form method="POST" class="resposta-container">
-                <textarea class="area-resposta" name="resposta" placeholder="Digite sua resposta aqui..."
-                    required></textarea>
+                <div id="resposta" class="area-resposta" contenteditable="true" placeholder="Digite sua resposta aqui..."></div>
                 <div class="flex-formatacoes-btn">
                     <div class="formatacoes">
-                        <img src="../../assets/icon-bold.png" alt="">
-                        <img src="../../assets/icon-italic.png" alt="">
-                        <img src="../../assets/icon-sublinhed.png" alt="">
+                        <button class="btnForm" type="button" id="btn-bold"><img src="../../assets/icons/icon-bold.png"
+                                alt="Negrito"></button>
+                        <button class="btnForm" type="button" id="btn-italic"><img
+                                src="../../assets/icons/icon-italic.png" alt="Itálico"></button>
+                        <button class="btnForm" type="button" id="btn-underline"><img
+                                src="../../assets/icons/icon-sublinhed.png" alt="Sublinhado"></button>
                     </div>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </div>
             </form>
+
         </div>
         <div class="lateral-direita"></div>
     </main>
+    <script src="pagina-resposta.js"></script>
 </body>
 
 </html>
