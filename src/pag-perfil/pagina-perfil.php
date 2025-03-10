@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Carrega as perguntas e respostas do usuário
-$stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS FROM knw_pergunta WHERE PER_USU_NOME = ?");
+$stmt = $pdo->prepare("SELECT *, TIMESTAMPDIFF(MINUTE, PER_DATA, NOW()) AS DIFERENCA_MINUTOS FROM knw_pergunta WHERE PER_USU_NOME = ? ORDER BY PER_DATA DESC");
 $stmt->execute([$_SESSION['usuario']]);
 $perguntas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -6,6 +6,11 @@
     left: 12.5%;
 }
 
+.link-post {
+    text-decoration: none;
+    color: black;
+}	
+
 .container {
     height: auto;
     padding: 0 1.64% 4% 1.64%;

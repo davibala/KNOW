@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1 class="titulo">Crie uma conta</h1>
                 <form class="form-criar-conta" method="post">
                     <div class="campos">
-                        <label class="titulos" for="nome">nome</label>
+                        <label class="titulos" for="nome">nickname</label>
                         <input class="inputs" name="nome" required>
                     </div>
                     <div class="campos">
