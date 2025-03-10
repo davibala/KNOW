@@ -111,31 +111,72 @@ INSERT INTO KNW_TAGS (TAG_NOME) VALUES ('PROJ');
 INSERT INTO KNW_TAGS (TAG_NOME) VALUES ('FUND');
 INSERT INTO KNW_TAGS (TAG_NOME) VALUES ('BD');
 
--- 25 PERGUNTAS --
+-- USUARIOS --
 
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como aprender PHP de forma eficiente?", "Quero começar a estudar PHP, mas não sei por onde começar. Alguém tem dicas de recursos ou métodos de estudo?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a diferença entre JavaScript e TypeScript?", "Estou começando a estudar desenvolvimento web e vi que existem JavaScript e TypeScript. Qual é a diferença entre eles e quando devo usar cada um?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como configurar um ambiente de desenvolvimento para Python?", "Preciso configurar um ambiente para desenvolver em Python. Quais ferramentas e bibliotecas são essenciais para começar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("O que é um banco de dados relacional?", "Estou estudando banco de dados e ouvi falar sobre bancos relacionais. Alguém pode explicar o que são e como funcionam?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como funciona o Git e GitHub?", "Quero aprender a usar Git e GitHub para versionamento de código. Alguém pode explicar os conceitos básicos e como começar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a melhor forma de aprender algoritmos?", "Estou com dificuldades em algoritmos e lógica de programação. Alguém tem dicas de como estudar e praticar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como criar uma API RESTful com Node.js?", "Quero criar uma API RESTful usando Node.js. Alguém pode me indicar um tutorial ou explicar os passos básicos?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("O que é Docker e como usá-lo?", "Ouvi falar sobre Docker, mas não sei exatamente o que é ou como usá-lo. Alguém pode explicar e dar exemplos práticos?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como fazer deploy de uma aplicação React?", "Preciso fazer o deploy de uma aplicação React, mas não sei por onde começar. Alguém pode me ajudar com os passos?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a diferença entre HTTP e HTTPS?", "Estou estudando desenvolvimento web e quero entender a diferença entre HTTP e HTTPS. Por que o HTTPS é mais seguro?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como otimizar o desempenho de um site?", "Meu site está lento e quero melhorar o desempenho. Quais são as melhores práticas para otimização?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("O que é machine learning e como começar?", "Estou interessado em machine learning, mas não sei por onde começar. Alguém pode explicar os conceitos básicos e indicar recursos?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como funciona o protocolo TCP/IP?", "Estou estudando redes de computadores e quero entender melhor o protocolo TCP/IP. Alguém pode explicar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a diferença entre SQL e NoSQL?", "Estou estudando banco de dados e quero entender a diferença entre SQL e NoSQL. Quando devo usar cada um?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como criar um chatbot usando Python?", "Quero criar um chatbot simples usando Python. Alguém pode me indicar bibliotecas ou tutoriais para começar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("O que é um framework e por que usar?", "Estou começando a programar e ouvi falar sobre frameworks. O que são e por que devo usá-los?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como funciona a autenticação JWT?", "Quero implementar autenticação JWT no meu projeto, mas não sei como funciona. Alguém pode explicar?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a melhor forma de aprender desenvolvimento mobile?", "Quero aprender desenvolvimento mobile, mas não sei por onde começar. Alguém tem dicas de recursos ou linguagens?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como usar o Bootstrap para criar layouts responsivos?", "Estou começando a usar Bootstrap e quero criar layouts responsivos. Alguém pode me ajudar com exemplos práticos?", "Davibala");
-INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("O que é CI/CD e como implementar?", "Ouvi falar sobre CI/CD, mas não sei como implementar. Alguém pode explicar os conceitos e dar exemplos?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como estudar para provas de matemática?", "Estou com dificuldades para estudar para as provas de matemática. Alguém tem dicas de como organizar os estudos e quais tópicos priorizar?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a melhor forma de fazer um resumo?", "Preciso fazer resumos para as aulas de história, mas não sei por onde começar. Alguém pode me dar dicas de como fazer resumos eficientes?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como melhorar minha redação?", "Sempre tiro notas baixas em redação. Quais são as melhores técnicas para melhorar a escrita e a argumentação?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a importância da física no dia a dia?", "Não entendo por que precisamos estudar física. Alguém pode me explicar como a física é aplicada no nosso cotidiano?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como lidar com a pressão dos vestibulares?", "Estou me sentindo muito pressionado com os vestibulares. Alguém tem dicas de como lidar com o estresse e se preparar melhor?", "Davibala");
-INSERT INTO knw_pergunta (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a melhor linguagem para iniciantes em programação?", "Quero começar a programar, mas não sei qual linguagem escolher. Alguém pode me recomendar uma linguagem fácil para iniciantes?", "Davibala");
+INSERT INTO `knw_usuarios` VALUES 
+('alexandres','alexandres@gmail.com','$2y$10$vJWHLMrd3IJ27x//a.qtA.SVQ/PjHIcZ5UA9AZaB0J4sPOGQkFgE6'),
+('bela','bela@gmail.com','$2y$10$dPMzc8okUViWf7tAxg/V5.na/lbjDBqxjG0XRxywMEfiQ1xkP.0ja'),
+('beto','beto@gmail.com','$2y$10$uHNrcGlApVKPwnjKToveXumhlrVbKukLL9NJxHGcI3aEscix0ybYy'),
+('brkn','brkn@gmail.com','$2y$10$ATYMsconryqTOqEWowhoYu/SSFdUMRdciMKwlIdXlC/rKK/mlGTYy'),
+('chulipa','chulipa@gmail.com','$2y$10$A6YtOk0rgFBjwY6TB25FpeXuPoLILfBoeq0MyciCTOqB18/Pd7ZhS'),
+('fael','fael@gmail.com','$2y$10$gx8a60CIVN5XPnm6uS2rdeDZQxA430ygggIMpUjub3b/6yD4XT9ou'),
+('jao','jao@gmail.com','$2y$10$Ed8Dy0o8BSJgd6IYlh4KIOuV9z7UcSkvHaf87N5opIJx.NAKfee6i'),
+('kauanmunista','kauanmunista@gmail.com','$2y$10$Xst/Adhe2NWAl7uot8g17elSDLUsiafuP3HRx.V6zx3xXtAz97Ch6'),
+('lilias','lilias@gmail.com','$2y$10$.MtNFe1ZvNxwFMvDlu9tluLEZP.tCh324Mmm4lvYgVEYi0wseJl1i'),
+('maisena','maisena@gmail.com','$2y$10$jf8w/CoEdkUtU7ywpbSYT.hVSsuAOGgwWpDV8v3DZmUUVFU6/3K5q'),
+('mantegavoadora','mantegavoadora@gmail.com','$2y$10$k2bJ7HZyl7oZA7QFcQZZZOcXsREiokQCzpc1DFhzzxnf8Z88o4Bhy'),
+('rntboiada','rntboiada@gmail.com','$2y$10$A9D//DVMIYlOsGU4bwgkc.a8cVHy5qnUyZYGPACXdzW2lkOtr2FHa'),
+('xavinho','xavinho@gmail.com','$2y$10$r7gZFpgeAocfas/CJYDtu.KosEB/KrWLPU492II2k1ASZ7gbEcTPq'),
+('shacolate','shacolate@gmail.com','$2y$10$uJBuSOpeM3AZbELI0WG4zOyuuVgOHGJQRP9LZ10.0JeuwNbrUYhai'),
+('yassuo','yassuo@gmail.com','$2y$10$pNfe9T6JlnzHQYlWVtF7l.ZU/2s.Ls1WTSBm26h8UEyr2VkMgmkHm');
+
+-- ALGUMAS PERGUNTAS --
+
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a lógica de programação pode ajudar na otimização de consultas SQL?", "Estou tentando otimizar consultas em um banco de dados relacional e percebi que a lógica de programação é essencial. Alguém pode me explicar como esses conceitos se relacionam?", "brkn");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a relação entre matemática discreta e estruturas de dados em POO?", "Estou estudando programação orientada a objetos e percebi que muitos conceitos de matemática discreta são aplicados em estruturas de dados. Alguém pode me explicar essa relação?", "yasuo");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como o design web pode impactar a experiência do usuário em aplicações que usam banco de dados?", "Estou desenvolvendo uma aplicação web que usa banco de dados e queria saber como o design web pode melhorar a experiência do usuário. Alguém tem dicas?", "shacolate");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a importância do inglês técnico para entender documentações de redes e protocolos?", "Estou estudando redes e percebi que muitas documentações técnicas estão em inglês. Alguém pode me explicar como o inglês técnico pode ajudar nessa área?", "mantegavoadora");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a matemática é aplicada no desenvolvimento de algoritmos para redes?", "Estou estudando redes e algoritmos, e percebi que a matemática é fundamental. Alguém pode me explicar como esses conceitos se conectam?", "rntboiada");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a importância da gramática na documentação de projetos de software?", "Estou documentando um projeto de software e queria saber como a gramática pode impactar a clareza e a qualidade da documentação. Alguém tem dicas?", "kauanmunista");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a programação orientada a objetos pode ser aplicada no desenvolvimento de interfaces web responsivas?", "Estou criando uma interface web responsiva e queria saber como os conceitos de POO podem ajudar nesse processo. Alguém pode me explicar?", "lilias");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a relação entre fundamentos da informática e a segurança em banco de dados?", "Estou estudando segurança em banco de dados e percebi que muitos conceitos de fundamentos da informática são importantes. Alguém pode me explicar essa relação?", "alexandres");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a lógica de programação pode ser usada para resolver problemas matemáticos em projetos de software?", "Estou desenvolvendo um software que resolve problemas matemáticos e queria saber como a lógica de programação pode ser aplicada. Alguém tem exemplos?", "xavinho");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a importância do inglês técnico para entender frameworks de design web?", "Estou aprendendo a usar frameworks de design web, mas muitas documentações estão em inglês. Alguém pode me explicar como o inglês técnico pode ajudar?", "maisena");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a matemática discreta é aplicada no desenvolvimento de algoritmos para banco de dados?", "Estou estudando algoritmos para banco de dados e percebi que a matemática discreta é fundamental. Alguém pode me explicar como esses conceitos se relacionam?", "chulipa");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a relação entre redes e banco de dados no desenvolvimento de aplicações web?", "Estou desenvolvendo uma aplicação web e queria entender como redes e banco de dados se conectam. Alguém pode me explicar?", "jao");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a programação orientada a objetos pode ser usada para organizar projetos de software?", "Estou gerenciando um projeto de software e queria saber como a POO pode ajudar na organização do código. Alguém tem dicas?", "fael");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Qual a importância do inglês técnico para entender documentações de frameworks de POO?", "Estou estudando frameworks de POO, mas muitas documentações estão em inglês. Alguém pode me explicar como o inglês técnico pode ajudar?", "beto");
+INSERT INTO KNW_PERGUNTA (PER_TITULO, PER_DESCRICAO, PER_USU_NOME) VALUES ("Como a matemática é aplicada no desenvolvimento de algoritmos para redes de computadores?", "Estou estudando algoritmos para redes e percebi que a matemática é essencial. Alguém pode me explicar como esses conceitos se conectam?", "bela");
+
+
+-- TAGS ASSOCIADAS AS PERGUNTAS --
+
+insert into pergunta_tags (per_id, tag_id) values (1,1);
+insert into pergunta_tags (per_id, tag_id) values (1,10);
+
+insert into pergunta_tags (per_id, tag_id) values (2,3);
+insert into pergunta_tags (per_id, tag_id) values (2,6);
+
+insert into pergunta_tags (per_id, tag_id) values (3,7);
+insert into pergunta_tags (per_id, tag_id) values (3,10);
+
+insert into pergunta_tags (per_id, tag_id) values (4,2);
+insert into pergunta_tags (per_id, tag_id) values (4,5);
+
+insert into pergunta_tags (per_id, tag_id) values (5,1);
+insert into pergunta_tags (per_id, tag_id) values (5,3);
+insert into pergunta_tags (per_id, tag_id) values (5,10);
+
+insert into pergunta_tags (per_id, tag_id) values (6,2);
+insert into pergunta_tags (per_id, tag_id) values (6,7);
+insert into pergunta_tags (per_id, tag_id) values (6,10);
+
+insert into pergunta_tags (per_id, tag_id) values (7,6);
+insert into pergunta_tags (per_id, tag_id) values (7,8);
+
+insert into pergunta_tags (per_id, tag_id) values (8,5);
+insert into pergunta_tags (per_id, tag_id) values (8,6);
+
+insert into pergunta_tags (per_id, tag_id) values (9,1);
+insert into pergunta_tags (per_id, tag_id) values (9,2);
+insert into pergunta_tags (per_id, tag_id) values (9,3);
