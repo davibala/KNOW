@@ -134,16 +134,16 @@
 }
 
 .tags {
-    width: 30%;
+    width: 100%;
     display: flex;
-    gap: 5%;
+    gap: 20%;
     white-space: nowrap;
 }
 
 .tag {
     display: flex;
     justify-content: center;
-    padding: 0 3% 0 3%;
+    padding: 0 10% 0 10%;
     font-family: Roboto;
     font-size: 12px;
     font-weight: 700;

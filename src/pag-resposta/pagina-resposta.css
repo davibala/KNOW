@@ -29,6 +29,17 @@
     cursor: pointer;
 }
 
+.btnForm img {
+    width: 32px;
+    height: 32px;
+}
+
+.nome-usuario {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1A5A8A;
+}
+
 .area-resposta {
     width: 100%;
     min-height: 150px;
@@ -99,6 +110,9 @@ hr {
 }
 
 .nome-autor {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1A5A8A;
     position: relative;
 }
 

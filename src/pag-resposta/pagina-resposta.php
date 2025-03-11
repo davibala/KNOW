@@ -142,12 +142,15 @@ $imagem = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena o usuário em um array ass
                 <div id="resposta" class="area-resposta" contenteditable="true" placeholder="Digite sua resposta aqui..."></div>
                 <div class="flex-formatacoes-btn">
                     <div class="formatacoes">
-                        <button class="btnForm" type="button" id="btn-bold"><img src="../../assets/icons/icon-bold.png"
+                        <button class="btnForm" type="button" id="btn-bold"><img 
+                                src="../../assets/icons/icon-bold.png"
                                 alt="Negrito"></button>
                         <button class="btnForm" type="button" id="btn-italic"><img
-                                src="../../assets/icons/icon-italic.png" alt="Itálico"></button>
+                                src="../../assets/icons/icon-italic.png" 
+                                alt="Itálico"></button>
                         <button class="btnForm" type="button" id="btn-underline"><img
-                                src="../../assets/icons/icon-sublinhed.png" alt="Sublinhado"></button>
+                                src="../../assets/icons/icon-sublinhed.png" 
+                                alt="Sublinhado"></button>
                     </div>
                     <button class="btn-1" id="btn-enviar" type="submit">Enviar</button>
                 </div>
