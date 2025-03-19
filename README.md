@@ -23,4 +23,19 @@
  * [Matheus G.](https://github.com/Snowloz)
  * [Renato E.](https://github.com/RenatoE77)
 
+## Como Rodar o Projeto
 
+Siga as etapas abaixo para configurar e executar o projeto em sua máquina local:
+
+1. **Clone o repositório**
+   Clone este repositório usando o seguinte comando:
+   ```bash
+   git clone https://github.com/davibala/KNOW
+
+2. **Crie o banco**
+   Vá até a pasta do projeto, procure pela pasta "src", em seguida entre na pasta "banco" e com o arquivo banco.sql, crie o seu banco. obs: Caso queira um banco limpo, apague a seção de dados fakes do arquivo.
+
+3. **Para rodar o projeto localmente**
+   Rode o projeto localmente usando o seguinte comando:
+   ```bash
+   php -S localhost:porta
