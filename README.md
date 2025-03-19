@@ -39,3 +39,9 @@ Siga as etapas abaixo para configurar e executar o projeto em sua máquina local
    Rode o projeto localmente usando o seguinte comando:
    ```bash
    php -S localhost:porta
+   
+4. **Acessar a página inicial**
+   Para acessar a pagina inical modifique o caminho no seu navegador
+   * de localhost:porta
+   * para localhost:porta/src/
+   
